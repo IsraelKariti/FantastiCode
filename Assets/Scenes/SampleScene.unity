@@ -606,6 +606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc167e572ed9fab4ebcf6e302754a7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closedBox: {fileID: 1733569413}
+  openBox: {fileID: 1836396079}
 --- !u!65 &638754921
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1275,7 +1277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1553557346
 Transform:
   m_ObjectHideFlags: 0
