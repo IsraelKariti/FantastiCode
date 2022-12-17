@@ -51,6 +51,7 @@ public class Dragger : MonoBehaviour
 
             if (selectedObject != null)
             {
+                // check if the target landing area is designed to accept this draggable
                 GameObject targetLandingArea = TargetCheck();
                 if (targetLandingArea != null)
                 {
@@ -58,9 +59,10 @@ public class Dragger : MonoBehaviour
                     landingArea.OnLandingArea(selectedObject);
                 }
                 else
-                    Destroy(selectedObject);
-                
-
+                {
+                    IDraggable draggable = selectedObject.GetComponent<IDraggable>();
+                    draggable.OnRejectedFromLandingArea();
+                }
             }
         }
     }
@@ -72,10 +74,20 @@ public class Dragger : MonoBehaviour
         {
             if (hit.collider != null)
             {
+
+                // check if the game object is released on a landing area
                 if (!hit.collider.CompareTag("landingArea"))
                     continue;
 
-                return hit.collider.gameObject;
+                // check if the landing area is suitable to the landing object
+                ILandingArea landingArea = hit.collider.gameObject.GetComponent<ILandingArea>();
+                if (landingArea.OnDraggableReleased(selectedObject))
+                {
+                    return hit.collider.gameObject;
+                }
+
+
+                
             }
         }
         return null;
