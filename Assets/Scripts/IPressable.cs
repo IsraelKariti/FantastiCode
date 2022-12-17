@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Pressable
+public interface IPressable
 {
     public void OnPressed();
 }

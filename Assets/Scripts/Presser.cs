@@ -9,7 +9,7 @@ public class Presser : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit[] hits = CastRay();
+            RaycastHit[] hits = CastRays();
 
             // check if there is a door in the collider list
             foreach (RaycastHit hit in hits)
@@ -18,7 +18,7 @@ public class Presser : MonoBehaviour
                 {
                     GameObject selectedObject = hit.collider.gameObject;
 
-                        Pressable p = selectedObject.GetComponent<Pressable>();
+                        IPressable p = selectedObject.GetComponent<IPressable>();
 
                         p.OnPressed();
                         return;
@@ -29,7 +29,7 @@ public class Presser : MonoBehaviour
         }
     }
 
-    private RaycastHit[] CastRay()
+    private RaycastHit[] CastRays()
     {
         Vector3 screenMousePosFar = new Vector3(
             Input.mousePosition.x,

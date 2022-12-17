@@ -15,19 +15,22 @@ public class Dragger : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("mouse down");
+            RaycastHit[] hits = CastRays();
 
-            if (selectedObject == null)
+            // check if there is a door in the collider list
+            foreach (RaycastHit hit in hits)
             {
-                RaycastHit hit = CastRay();
                 if (hit.collider != null)
                 {
                     if (!hit.collider.CompareTag("draggable"))
-                        return;
+                        continue;
 
-                    selectedObject = hit.collider.gameObject;
+                    IDraggable draggable = hit.collider.gameObject.GetComponent<IDraggable>();
+
+                    selectedObject = draggable.OnDragged(); ;
                     startDragPos = selectedObject.transform.position;
 
+                    return;
                 }
             }
         }
@@ -48,28 +51,34 @@ public class Dragger : MonoBehaviour
 
             if (selectedObject != null)
             {
-
-                if (ProximityCheck())
+                GameObject targetLandingArea = TargetCheck();
+                if (targetLandingArea != null)
                 {
-
-                    // snap to destination
-                    selectedObject.transform.position = startDragPos;
-
-                    // let go
-                    selectedObject = null;
+                    ILandingArea landingArea = targetLandingArea.GetComponent<ILandingArea>();
+                    landingArea.OnLandingArea(selectedObject);
                 }
-                else// if released operator in the wrong place
-                {
-                    //Debug.Log("operator outside");
-
-                    selectedObject.transform.position = startDragPos;
-                    // let go
-                    selectedObject = null;
-
-                }
+                else
+                    Destroy(selectedObject);
+                
 
             }
         }
+    }
+
+    private GameObject TargetCheck()
+    {
+        RaycastHit[] hits = CastRays();
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider != null)
+            {
+                if (!hit.collider.CompareTag("landingArea"))
+                    continue;
+
+                return hit.collider.gameObject;
+            }
+        }
+        return null;
     }
 
     private bool ProximityCheck()
@@ -89,6 +98,28 @@ public class Dragger : MonoBehaviour
         }
     }
 
+    private RaycastHit[] CastRays()
+    {
+        Vector3 screenMousePosFar = new Vector3(
+            Input.mousePosition.x,
+            Input.mousePosition.y,
+            Camera.main.farClipPlane
+            );
+
+
+        Vector3 screenMousePosNear = new Vector3(
+            Input.mousePosition.x,
+            Input.mousePosition.y,
+            Camera.main.nearClipPlane
+            );
+
+        Vector3 worldMousePosFar = Camera.main.ScreenToWorldPoint(screenMousePosFar);
+        Vector3 worldMousePosNear = Camera.main.ScreenToWorldPoint(screenMousePosNear);
+
+        RaycastHit[] hits = Physics.RaycastAll(worldMousePosNear, worldMousePosFar - worldMousePosNear);
+
+        return hits;
+    }
     private RaycastHit CastRay()
     {
         Vector3 screenMousePosFar = new Vector3(

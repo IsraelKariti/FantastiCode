@@ -6,6 +6,8 @@ TagManager:
   tags:
   - draggable
   - pressable
+  - duplicable
+  - landingArea
   layers:
   - Default
   - TransparentFX
