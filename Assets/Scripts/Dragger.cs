@@ -57,6 +57,7 @@ public class Dragger : MonoBehaviour
                 {
                     ILandingArea landingArea = targetLandingArea.GetComponent<ILandingArea>();
                     landingArea.OnLandingArea(selectedObject);
+                    selectedObject = null;
                 }
                 else
                 {

@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
-public class IntVariableLandingArea : MonoBehaviour, ILandingArea
+public class PointerVariableLandingArea : MonoBehaviour, ILandingArea
 {
     // check if the object that is being released on the landing area is supposed to be released there
-    // for ex. address can't be released on an int
+    // for ex. pointer can't be released on an int
     public bool OnDraggableReleased(GameObject go)
     {
         // how do i check if the game object is an int???
-        IntVal intVal = go.GetComponent<IntVal>();
-        if (intVal != null)
+        PointerVal pointerVal = go.GetComponent<PointerVal>();
+        if (pointerVal != null)
             return true;
         else
             return false;
