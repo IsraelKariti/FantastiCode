@@ -24,6 +24,8 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
             Destroy(child.gameObject);
         }
         go.transform.parent = transform;
+
+
     }
 
 }

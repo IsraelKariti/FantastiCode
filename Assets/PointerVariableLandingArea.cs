@@ -10,7 +10,8 @@ public class PointerVariableLandingArea : MonoBehaviour, ILandingArea
     {
         // how do i check if the game object is an int???
         PointerVal pointerVal = go.GetComponent<PointerVal>();
-        if (pointerVal != null)
+        Ticket ticket = go.GetComponent<Ticket>();
+        if (pointerVal != null || ticket!=null)
             return true;
         else
             return false;
@@ -19,17 +20,13 @@ public class PointerVariableLandingArea : MonoBehaviour, ILandingArea
     // implemantaion of ILandingArea
     public void OnLandingArea(GameObject go)
     {
-        // check if the go is an int
-
+        foreach(Transform transform in transform)
+        {
+            Destroy(transform.gameObject);
+        }
 
         // get int value
-        string str = go.transform.Find("ValText").GetComponent<TMP_Text>().text;
-
-        //set string to this val
-        GameObject txt = transform.parent.Find("BoxOpen/IntVal/ValText").gameObject;
-        txt.GetComponent<TMP_Text>().text = str;
-
-        Destroy(go);
+        go.transform.parent = transform;
     }
 
 

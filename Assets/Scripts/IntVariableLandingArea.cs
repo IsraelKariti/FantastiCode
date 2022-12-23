@@ -27,7 +27,7 @@ public class IntVariableLandingArea : MonoBehaviour, ILandingArea
         string str = go.transform.Find("ValText").GetComponent<TMP_Text>().text;
 
         //set string to this val
-        GameObject txt = transform.parent.Find("BoxOpen/IntVal/ValText").gameObject;
+        GameObject txt = transform.Find("IntVal/ValText").gameObject;
         txt.GetComponent<TMP_Text>().text = str;
 
         Destroy(go);

@@ -57,13 +57,14 @@ public class Dragger : MonoBehaviour
                 {
                     ILandingArea landingArea = targetLandingArea.GetComponent<ILandingArea>();
                     landingArea.OnLandingArea(selectedObject);
-                    selectedObject = null;
+                    
                 }
                 else
                 {
                     IDraggable draggable = selectedObject.GetComponent<IDraggable>();
                     draggable.OnRejectedFromLandingArea();
                 }
+                selectedObject = null;
             }
         }
     }
