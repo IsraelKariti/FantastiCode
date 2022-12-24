@@ -27,6 +27,7 @@ public class PointerVariableLandingArea : MonoBehaviour, ILandingArea
 
         // get int value
         go.transform.parent = transform;
+        go.transform.localPosition = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y, -1f);
     }
 
 

@@ -35,13 +35,19 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
         // destroy amperdand on landing area
         Destroy(transform.Find("Ampersand(Clone)").gameObject);
 
-       
-        //change Address Parent to the return value
+        // delete all children of return value
+        Transform returnValueLandingAreaTransform = GameObject.Find("ReturnValue/LandingArea").transform;
+        foreach (Transform t in returnValueLandingAreaTransform)
+            Destroy(t.gameObject);
+
+        //change ticket to be the child of return value
         Transform ticketTransform = transform.Find("Ticket(Clone)");
-        ticketTransform.parent = GameObject.Find("ReturnValue/LandingArea").transform;
+        ticketTransform.parent = returnValueLandingAreaTransform;
 
         // send the address to the return value
         yield return SendToReturnValue(ticketTransform);
+
+        
     }
 
     private IEnumerator SendToReturnValue(Transform ticket)
@@ -62,6 +68,8 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
             ticket.localPosition = Vector3.Lerp(startLocalPos, endLocalPos, fraction);
             yield return null;
         }
+
+        // destroy all children on return value
     }
 
 }

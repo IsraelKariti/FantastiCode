@@ -23,6 +23,17 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
         transform.position = startPos;
     }
 
+    private void OnDestroy()
+    {
+        for(int i = 0; i < transforms.Length; i++)
+        {
+            Transform currTransform = transforms[i];
+            inCloudRadiuses[i] = 0;
+
+            currTransform.GetComponent<Cloud>().DimCloud();
+        }
+    }
+
     private void Start()
     {
         // get all clouds' transforms
