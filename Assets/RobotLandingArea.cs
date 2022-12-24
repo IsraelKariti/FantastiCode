@@ -28,6 +28,10 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
     {
         //
         Debug.Log("robot landed");
+
+        // check box
+        transform.parent.Find("CheckBox/CheckMark").gameObject.SetActive(true);
+        // transfer ticket to return value
     }
 
 }
