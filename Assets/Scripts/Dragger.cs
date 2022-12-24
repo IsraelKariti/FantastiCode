@@ -27,8 +27,10 @@ public class Dragger : MonoBehaviour
 
                     IDraggable draggable = hit.collider.gameObject.GetComponent<IDraggable>();
 
-                    selectedObject = draggable.OnDragged(); ;
-                    startDragPos = selectedObject.transform.position;
+                    selectedObject = draggable.OnDragged(); 
+                    
+                    if(selectedObject!= null)
+                       startDragPos = selectedObject.transform.position;
 
                     return;
                 }

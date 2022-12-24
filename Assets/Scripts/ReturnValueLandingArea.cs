@@ -13,7 +13,9 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
         IntVal intVal = go.GetComponent<IntVal>();
         PointerVal pointerVal = go.GetComponent<PointerVal>();
         AsteriskOperator asterisk = go.GetComponent<AsteriskOperator>();
-        if (intVal != null || pointerVal != null|| asterisk != null)
+        Ticket ticket = go.GetComponent<Ticket>();
+
+        if (intVal != null || pointerVal != null|| asterisk != null || ticket != null)
             return true;
         else
             return false;
