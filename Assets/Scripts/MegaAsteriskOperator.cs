@@ -7,6 +7,11 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
     Vector3 startPos;
     Transform[] transforms;
     int[] inCloudRadiuses;
+
+    double innerRadius = 7;
+    double outerRadius = 15;
+
+
     public GameObject OnDragged()
     {
         startPos = transform.position;
@@ -40,7 +45,7 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
             double dist = Vector3.SqrMagnitude(transform.position - currTransform.position);
 
             // enter outer circle
-            if (inCloudRadiuses[i] == 0 && dist < 20)
+            if (inCloudRadiuses[i] == 0 && dist < outerRadius)
             {
                 inCloudRadiuses[i] = 1;
 
@@ -50,7 +55,7 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
             }
 
             // exit outer circle
-            if (inCloudRadiuses[i] == 1 && dist > 20)
+            if (inCloudRadiuses[i] == 1 && dist > outerRadius)
             {
                 inCloudRadiuses[i] = 0;
 
@@ -60,7 +65,7 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
             }
 
             // endter inner circle
-            if (inCloudRadiuses[i] == 1 && dist < 10)
+            if (inCloudRadiuses[i] == 1 && dist < innerRadius)
             {
                 inCloudRadiuses[i] = 2;
 
@@ -70,7 +75,7 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
             }
 
             // exit inner circle
-            if (inCloudRadiuses[i] == 2 && dist > 10)
+            if (inCloudRadiuses[i] == 2 && dist > innerRadius)
             {
                 inCloudRadiuses[i] = 1;
 
