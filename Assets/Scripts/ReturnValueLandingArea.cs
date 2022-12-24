@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
 {
+    public GameObject megaAsteriskPrefab;
     // check if the object that is being released on the landing area is supposed to be released there
     // for ex. operators can't be released on a return value (only int and address can!)
     public bool OnDraggableReleased(GameObject go)
@@ -35,8 +36,17 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
                 {
                     Debug.Log("asterisk + address");
                     // create mega-asterisk
+                    Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 3);
+                    GameObject megaAsterisk = Instantiate(megaAsteriskPrefab, pos, transform.rotation);
 
+                    // set ticket to be child of mega asterisk
+                    ticket.transform.parent = megaAsterisk.transform;
 
+                    // set ticket infront of the mega asterisk
+                    ticket.transform.localPosition = new Vector3(0, -0.15f, -1);
+
+                    // remove box collider from ticket
+                    Destroy(ticket.GetComponent<BoxCollider>());
                 }
             }
 
