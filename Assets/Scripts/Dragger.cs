@@ -48,7 +48,6 @@ public class Dragger : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-
             if (selectedObject != null)
             {
                 // check if the target landing area is designed to accept this draggable

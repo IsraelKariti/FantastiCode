@@ -11,7 +11,8 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
         // how do i check if the game object is an int???
         IntVal intVal = go.GetComponent<IntVal>();
         PointerVal pointerVal = go.GetComponent<PointerVal>();
-        if (intVal != null || pointerVal != null)
+        AsteriskOperator asterisk = go.GetComponent<AsteriskOperator>();
+        if (intVal != null || pointerVal != null|| asterisk != null)
             return true;
         else
             return false;
@@ -19,6 +20,31 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
 
     public void OnLandingArea(GameObject go)
     {
+        // check if the dropped object is asterik
+        AsteriskOperator asterisk = go.GetComponent<AsteriskOperator>();
+        if(asterisk != null)
+        {
+            // check if there is anything on the landing area
+            
+            if (transform.childCount>0)
+            {
+                // check if the object on the return value is a ticket
+                Transform child = transform.GetChild(0);
+                Ticket ticket = child.gameObject.GetComponent<Ticket>();
+                if (ticket != null)
+                {
+                    Debug.Log("asterisk + address");
+                    // create mega-asterisk
+
+
+                }
+            }
+
+            Destroy(go);
+            return;
+        }
+
+        // if the return value is int or pointer
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
