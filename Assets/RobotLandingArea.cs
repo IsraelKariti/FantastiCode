@@ -37,6 +37,10 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         go.transform.parent = transform;
 
         StartCoroutine(AnimateRobot(go));
+
+        // log in code
+        CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+        codeLogger.SetExtra("malloc");
     }
 
     private IEnumerator AnimateRobot(GameObject go)

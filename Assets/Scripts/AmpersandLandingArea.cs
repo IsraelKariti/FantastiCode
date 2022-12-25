@@ -27,10 +27,10 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
         // update code logger
         // get current variable name
         string varName = transform.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
+
         // log in code
-        GameObject codeLoggerText = GameObject.Find("CodeLogger/Text (TMP)");
-        TMP_Text tMP_Text = codeLoggerText.GetComponent<TMP_Text>();
-        tMP_Text.text = tMP_Text.text + "\n&" + varName ;
+        CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+        codeLogger.SetExtra("&" + varName);
     }
 
     private IEnumerator CaptureAddressInsertToReturnValue(GameObject go)

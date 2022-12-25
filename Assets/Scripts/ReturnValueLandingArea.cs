@@ -36,7 +36,6 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
                 Ticket ticket = child.gameObject.GetComponent<Ticket>();
                 if (ticket != null)
                 {
-                    Debug.Log("asterisk + address");
                     // create mega-asterisk
                     Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 3);
                     GameObject megaAsterisk = Instantiate(megaAsteriskPrefab, pos, transform.rotation);
@@ -50,6 +49,13 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
 
                     // remove box collider from ticket
                     Destroy(ticket.GetComponent<BoxCollider>());
+
+                    // update logger
+                    CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+
+                    string loggerExtra = codeLogger.GetExtra();
+
+                    codeLogger.SetExtra("*" + loggerExtra);
                 }
             }
 

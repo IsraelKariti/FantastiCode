@@ -7,21 +7,25 @@ using UnityEngine;
 public class IntVal : MonoBehaviour, IDraggable
 {
     Vector3 startPos;
-
+    public bool openedByVariableButton;
     public void OnRejectedFromLandingArea()
     {
-        // if dragged from box
-        if (transform.parent == null)
+
+
+        // if dragged from return value
+        if (transform.parent != null)
         {
+            transform.position = startPos;
+
+        }
+        else
+        {// if dragged from box
             // remove text from code logger
             CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
             codeLogger.ClearExtra();
 
             Destroy(gameObject);
-        }
-        else// if dragged from return value
-        {
-            transform.position = startPos;
+
         }
     }
     public GameObject OnDragged()
@@ -39,10 +43,12 @@ public class IntVal : MonoBehaviour, IDraggable
             // get current variable name
             string varName = transform.parent.parent.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
 
-            // log in code
-            CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
-            codeLogger.SetExtra(varName);
-
+            if (openedByVariableButton)
+            {
+                // log in code
+                CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+                codeLogger.SetExtra(varName);
+            }
             return go;
         }
         else

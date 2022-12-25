@@ -20,14 +20,28 @@ public class PointerVariableLandingArea : MonoBehaviour, ILandingArea
     // implemantaion of ILandingArea
     public void OnLandingArea(GameObject go)
     {
-        foreach(Transform transform in transform)
+        // clear all previous children
+        foreach(Transform t in transform)
         {
-            Destroy(transform.gameObject);
+            if(t.gameObject != go)
+                Destroy(t.gameObject);
         }
 
-        // get int value
+        // set address value as child of landing area 
         go.transform.parent = transform;
         go.transform.localPosition = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y, -1f);
+
+        // update logger
+
+        // get current variable name
+        string varName = transform.parent.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
+
+        // update the code logger
+        CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+
+        string loggerExtra = codeLogger.GetExtra();
+
+        codeLogger.AddLine(varName + " = " + loggerExtra);
     }
 
 

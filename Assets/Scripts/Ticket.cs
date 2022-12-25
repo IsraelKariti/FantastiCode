@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Ticket : MonoBehaviour, IDraggable
@@ -13,8 +14,17 @@ public class Ticket : MonoBehaviour, IDraggable
         // check if the ticket is in a box - return duplicate
         if (transform.parent.GetComponent<PointerVariableLandingArea>() != null)
         {
+            // create duplice
             GameObject g = Instantiate(gameObject);
-            g.name = "Ticket";
+            g.name = "Ticket";// fix name
+
+            // get current variable name
+            string varName = transform.parent.parent.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
+
+            // log in code
+            CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+            codeLogger.SetExtra(varName);
+
             return g;
         }
 
@@ -29,11 +39,19 @@ public class Ticket : MonoBehaviour, IDraggable
     public void OnRejectedFromLandingArea()
     {
         // check if ticket is dragged from a box
-        //if(transform.parent.GetComponent<ReturnValueLandingArea>()!=null)
-        if(transform.parent!=null)
+        if (transform.parent != null)
+        {
             transform.localPosition = localPos;
+        }
         else
+        {
+            // remove text from code logger
+            CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+            codeLogger.ClearExtra();
+
             Destroy(gameObject);
+
+        }
 
 
         // upon rejection ticket should get back to 

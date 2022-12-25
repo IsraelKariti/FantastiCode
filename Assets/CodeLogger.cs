@@ -47,10 +47,12 @@ public class CodeLogger : MonoBehaviour
    
     public void AddLine(string str)
     {
-        log = log + "\n" + str + "\n";
+        log = log + str + "\n";
 
         isUnfinishedLine = false;
 
         extra = "";
+
+        tmp_text.text = log;
     }
 }

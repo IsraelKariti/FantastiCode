@@ -9,21 +9,22 @@ public class VariableButton :MonoBehaviour, IPressable
     public GameObject landingArea;
 
     private bool isOpen = false;
-    private bool isClosed = true;
 
     public void OnPressed()
     {
-        Debug.Log("pressed!");
-
         isOpen = !isOpen;
 
-        // 
-        isClosed = !isClosed;
-
-        Debug.Log("isClosed after flip: " + isClosed);
-
-        closedBox.SetActive(isClosed);
+        closedBox.SetActive(!isOpen);
         openBox.SetActive(isOpen);
         landingArea.SetActive(isOpen);
+
+        // let in know that it was opened by button
+        Transform intValueTransform = transform.parent.Find("BoxOpen/LandingArea/IntVal");
+        if(intValueTransform != null)
+        {
+            GameObject intValGameObject = intValueTransform.gameObject;
+            intValGameObject.GetComponent<IntVal>().openedByVariableButton = isOpen;
+
+        }
     }
 }
