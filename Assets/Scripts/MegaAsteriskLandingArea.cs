@@ -42,7 +42,7 @@ public class MegaAsteriskLandingArea : MonoBehaviour, ILandingArea
     private string ExtractTextFromMegaAsterisk(GameObject go)
     {
         // get the ticket
-        Transform ticketTransform = go.transform.Find("Ticket(Clone)");
+        Transform ticketTransform = go.transform.Find("Ticket");
 
         // get the address from the ticket
         Transform ticketTextTransform = ticketTransform.Find("Text (TMP)");

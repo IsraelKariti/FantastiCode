@@ -6,7 +6,9 @@ public class AmpersandOperator : MonoBehaviour, IDraggable
 {
     public GameObject OnDragged()
     {
-        return Instantiate(gameObject);
+        GameObject go = Instantiate(gameObject);
+        go.name = "Ampersand";
+        return go;
     }
     public void OnRejectedFromLandingArea()
     {

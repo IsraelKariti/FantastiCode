@@ -12,7 +12,11 @@ public class Ticket : MonoBehaviour, IDraggable
 
         // check if the ticket is in a box - return duplicate
         if (transform.parent.GetComponent<PointerVariableLandingArea>() != null)
-            return Instantiate(gameObject);
+        {
+            GameObject g = Instantiate(gameObject);
+            g.name = "Ticket";
+            return g;
+        }
 
         // check if the ticket is on the return value - return gameobject
         if (transform.parent.GetComponent<ReturnValueLandingArea>() != null)

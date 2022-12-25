@@ -6,7 +6,9 @@ public class AsteriskOperator : MonoBehaviour, IDraggable
 {
     public GameObject OnDragged()
     {
-        return Instantiate(gameObject);
+        GameObject go = Instantiate(gameObject);
+        go.name = "Asterisk";
+        return go;
     }
 
     public void OnRejectedFromLandingArea()

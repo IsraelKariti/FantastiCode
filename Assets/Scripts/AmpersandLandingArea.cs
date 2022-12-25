@@ -33,7 +33,7 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
         yield return laso.Fetch();
 
         // destroy amperdand on landing area
-        Destroy(transform.Find("Ampersand(Clone)").gameObject);
+        Destroy(transform.Find("Ampersand").gameObject);
 
         // delete all children of return value
         Transform returnValueLandingAreaTransform = GameObject.Find("ReturnValue/LandingArea").transform;
@@ -41,7 +41,7 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
             Destroy(t.gameObject);
 
         //change ticket to be the child of return value
-        Transform ticketTransform = transform.Find("Ticket(Clone)");
+        Transform ticketTransform = transform.Find("Ticket");
         ticketTransform.parent = returnValueLandingAreaTransform;
 
         // send the address to the return value

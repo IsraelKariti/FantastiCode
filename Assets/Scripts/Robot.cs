@@ -6,7 +6,9 @@ public class Robot : MonoBehaviour, IDraggable
 {
     public GameObject OnDragged()
     {
-        return Instantiate(gameObject);
+        GameObject go = Instantiate(gameObject);
+        go.name = "Robot";
+        return go;
     }
 
     public void OnRejectedFromLandingArea()

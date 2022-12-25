@@ -21,6 +21,7 @@ public class Laso : MonoBehaviour
         // duplicate address
         GameObject ticket = transform.parent.parent.parent.Find("Ticket").gameObject;
         GameObject dup = Instantiate(ticket, ticket.transform.position, ticket.transform.rotation, transform);
+        dup.name = "Ticket";
 
         // draw address back
         yield return UnStrechAnimWithTicket(dup);

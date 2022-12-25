@@ -55,6 +55,7 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
 
         // duplicate ticket
         GameObject ticketDup = Instantiate(transform.parent.Find("Ticket").gameObject, go.transform);
+        ticketDup.name = "Ticket";
         ticketDup.transform.localPosition = new Vector3(2f, 0.1f, 2f);
 
         // animate robot to the return value
@@ -65,7 +66,7 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         // make ticket the child of the return value
         foreach (Transform t in returnValueTransform)
             Destroy(t.gameObject);
-        go.transform.Find("Ticket(Clone)").parent = returnValueTransform;
+        go.transform.Find("Ticket").parent = returnValueTransform;
 
         // destroy robot
         Destroy(go);

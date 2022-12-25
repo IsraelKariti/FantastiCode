@@ -40,6 +40,7 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
                     // create mega-asterisk
                     Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 3);
                     GameObject megaAsterisk = Instantiate(megaAsteriskPrefab, pos, transform.rotation);
+                    megaAsterisk.name = "Asterisk";
 
                     // set ticket to be child of mega asterisk
                     ticket.transform.parent = megaAsterisk.transform;
@@ -59,7 +60,8 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
         // if the return value is int or pointer
         foreach (Transform child in transform)
         {
-            Destroy(child.gameObject);
+            if(!( child.gameObject==go) )// dont erase value if it is dragged from the return value and than released again on the return value
+                Destroy(child.gameObject);
         }
         go.transform.parent = transform;
 

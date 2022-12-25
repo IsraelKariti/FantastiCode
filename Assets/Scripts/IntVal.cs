@@ -23,7 +23,9 @@ public class IntVal : MonoBehaviour, IDraggable
         // if dragged from box
         if (transform.parent.GetComponent<IntVariableLandingArea>() != null)
         {
-            return Instantiate(gameObject);
+            GameObject go = Instantiate(gameObject);
+            go.name = "IntVal";
+            return go;
         }
         else
         {// if dragged from return value
