@@ -20,15 +20,23 @@ public class IntVariableLandingArea : MonoBehaviour, ILandingArea
     // implemantaion of ILandingArea
     public void OnLandingArea(GameObject go)
     {
-        // check if the go is an int
-
-
         // get int value
         string str = go.transform.Find("ValText").GetComponent<TMP_Text>().text;
 
         //set string to this val
         GameObject txt = transform.Find("IntVal/ValText").gameObject;
         txt.GetComponent<TMP_Text>().text = str;
+
+
+        // get current variable name
+        string varName = transform.parent.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
+
+        // update the code logger
+        CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+
+        string loggerExtra = codeLogger.GetExtra();
+
+        codeLogger.AddLine(varName + " = " + loggerExtra);
 
         Destroy(go);
     }

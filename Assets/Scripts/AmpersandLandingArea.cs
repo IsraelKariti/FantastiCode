@@ -23,6 +23,14 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
         go.transform.parent = transform;
 
         StartCoroutine( CaptureAddressInsertToReturnValue(go));
+
+        // update code logger
+        // get current variable name
+        string varName = transform.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
+        // log in code
+        GameObject codeLoggerText = GameObject.Find("CodeLogger/Text (TMP)");
+        TMP_Text tMP_Text = codeLoggerText.GetComponent<TMP_Text>();
+        tMP_Text.text = tMP_Text.text + "\n&" + varName ;
     }
 
     private IEnumerator CaptureAddressInsertToReturnValue(GameObject go)

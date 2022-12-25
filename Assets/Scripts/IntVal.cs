@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class IntVal : MonoBehaviour, IDraggable
@@ -11,6 +13,10 @@ public class IntVal : MonoBehaviour, IDraggable
         // if dragged from box
         if (transform.parent == null)
         {
+            // remove text from code logger
+            CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+            codeLogger.ClearExtra();
+
             Destroy(gameObject);
         }
         else// if dragged from return value
@@ -23,8 +29,20 @@ public class IntVal : MonoBehaviour, IDraggable
         // if dragged from box
         if (transform.parent.GetComponent<IntVariableLandingArea>() != null)
         {
+            // create duplicate
             GameObject go = Instantiate(gameObject);
             go.name = "IntVal";
+
+            // delete childred of the return value landing area
+            ClearLandingArea();
+
+            // get current variable name
+            string varName = transform.parent.parent.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
+
+            // log in code
+            CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+            codeLogger.SetExtra(varName);
+
             return go;
         }
         else
@@ -34,5 +52,10 @@ public class IntVal : MonoBehaviour, IDraggable
         }
     }
 
-
+    private void ClearLandingArea()
+    {
+        GameObject returnValueLandingArea = GameObject.Find("ReturnValue/LandingArea");
+        foreach (Transform t in returnValueLandingArea.transform)
+            Destroy(t.gameObject);
+    }
 }
