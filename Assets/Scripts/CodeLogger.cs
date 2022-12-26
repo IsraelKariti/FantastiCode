@@ -14,8 +14,11 @@ public class CodeLogger : MonoBehaviour
 
     TMP_Text tmp_text;
 
+    int counter = 0;
+
     private void Start()
     {
+        counter = 0;
         tmp_text = transform.Find("Text").GetComponent<TMP_Text>();
     }
 
@@ -47,6 +50,10 @@ public class CodeLogger : MonoBehaviour
    
     public void AddLine(string str)
     {
+        ClearFirstLine();
+
+        counter++;
+
         log = log + str + "\n";
 
         isUnfinishedLine = false;
@@ -54,5 +61,22 @@ public class CodeLogger : MonoBehaviour
         extra = "";
 
         tmp_text.text = log;
+    }
+
+    private void ClearFirstLine()
+    {
+        if(counter == 4)
+        {
+            string[] lines = log.Split("\n");
+
+            lines[0] = lines[1];
+            lines[1] = lines[2];
+            lines[2] = lines[3];
+
+            log = lines[0] + "\n" + lines[1] + "\n" + lines[2] + "\n";
+
+            // decrease to 3
+            counter--;
+        }
     }
 }
