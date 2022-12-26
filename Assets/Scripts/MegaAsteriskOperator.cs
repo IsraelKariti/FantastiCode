@@ -28,6 +28,9 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
         for(int i = 0; i < transforms.Length; i++)
         {
             Transform currTransform = transforms[i];
+            if (currTransform == null)
+                continue;
+
             inCloudRadiuses[i] = 0;
 
             currTransform.GetComponent<Cloud>().DimCloud();
@@ -38,11 +41,11 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
     {
         // get all clouds' transforms
         transforms = new Transform[5];
-        transforms[0] = GameObject.Find("IntVariable1/Cloud").transform;
-        transforms[1] = GameObject.Find("IntVariable2/Cloud").transform;
-        transforms[2] = GameObject.Find("IntVariable3/Cloud").transform;
-        transforms[3] = GameObject.Find("IntVariable4/Cloud").transform;
-        transforms[4] = GameObject.Find("PointerVariable/Cloud").transform;
+        transforms[0] = GameObject.Find("IntVariable1/Cloud")?.transform;
+        transforms[1] = GameObject.Find("IntVariable2/Cloud")?.transform;
+        transforms[2] = GameObject.Find("IntVariable3/Cloud")?.transform;
+        transforms[3] = GameObject.Find("IntVariable4/Cloud")?.transform;
+        transforms[4] = GameObject.Find("PointerVariable/Cloud")?.transform;
 
         inCloudRadiuses = new int[5];
     }
@@ -53,6 +56,9 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
         for (int i = 0;i < transforms.Length;i++)
         {
             Transform currTransform = transforms[i];
+            if (currTransform == null)
+                continue;
+
             double dist = Vector3.SqrMagnitude(transform.position - currTransform.position);
 
             // enter outer circle

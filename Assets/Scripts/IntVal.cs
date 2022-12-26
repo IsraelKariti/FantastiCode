@@ -61,7 +61,9 @@ public class IntVal : MonoBehaviour, IDraggable
     private void ClearLandingArea()
     {
         GameObject returnValueLandingArea = GameObject.Find("ReturnValue/LandingArea");
-        foreach (Transform t in returnValueLandingArea.transform)
-            Destroy(t.gameObject);
+
+        if(returnValueLandingArea!=null)
+            foreach (Transform t in returnValueLandingArea.transform)
+                Destroy(t.gameObject);
     }
 }
