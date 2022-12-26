@@ -30,12 +30,15 @@ public class MegaAsteriskLandingArea : MonoBehaviour, ILandingArea
 
     public void OnLandingArea(GameObject go)
     {
-        // check if the address match
-        
         // open the box
         transform.parent.Find("BoxOpen").gameObject.SetActive(true);
         transform.parent.Find("BoxClosed").gameObject.SetActive(false);
-        
+
+        // get the address representaion (ptr1 / malloc / &var1)
+        string addressRepresentaion = go.GetComponent<IRepresentable>().getRepresentation();
+
+        transform.parent.GetComponent<IRepresentable>().setRepresentation("*" + addressRepresentaion);
+
         Destroy(go);
     }
 

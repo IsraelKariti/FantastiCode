@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MegaAsteriskOperator : MonoBehaviour, IDraggable
+public class MegaAsteriskOperator : MonoBehaviour, IDraggable, IRepresentable
 {
     Vector3 startPos;
     Transform[] transforms;
@@ -11,6 +11,7 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
     double innerRadius = 7;
     double outerRadius = 15;
 
+    public string representation;
 
     public GameObject OnDragged()
     {
@@ -103,5 +104,15 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable
         }
 
 
+    }
+
+    public string getRepresentation()
+    {
+        return representation;
+    }
+
+    public void setRepresentation(string r)
+    {
+        representation = r;
     }
 }

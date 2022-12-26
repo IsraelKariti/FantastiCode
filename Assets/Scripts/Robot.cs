@@ -8,6 +8,8 @@ public class Robot : MonoBehaviour, IDraggable
     {
         GameObject go = Instantiate(gameObject);
         go.name = "Robot";
+
+
         return go;
     }
 

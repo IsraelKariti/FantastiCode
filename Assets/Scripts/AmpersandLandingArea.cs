@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class AmpersandLandingArea : MonoBehaviour, ILandingArea
 {
+    string varName;
+    private void Start()
+    {
+        // get current variable name
+        varName = transform.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
+    }
+
     // check if the object that is being released on the landing area is supposed to be released there
     // for ex. address can't be released on an int
     public bool OnDraggableReleased(GameObject go)
@@ -25,8 +32,7 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
         StartCoroutine( CaptureAddressInsertToReturnValue(go));
 
         // update code logger
-        // get current variable name
-        string varName = transform.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
+
 
         // log in code
         CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
@@ -55,7 +61,14 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
         // send the address to the return value
         yield return SendToReturnValue(ticketTransform);
 
-        
+        // update the representation in the return value
+        returnValueLandingAreaTransform.GetComponent<ReturnValueLandingArea>().representation = "&" + varName;
+
+        // check if the level is complete
+        GameObject gameManagerGameObject = GameObject.Find("GameManager");
+        GameManager gameManager = gameManagerGameObject.GetComponent<GameManager>();
+        gameManager.CheckLevelComplete();
+
     }
 
     private IEnumerator SendToReturnValue(Transform ticket)

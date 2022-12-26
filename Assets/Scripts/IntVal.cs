@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class IntVal : MonoBehaviour, IDraggable
+public class IntVal : MonoBehaviour, IDraggable, IRepresentable
 {
     Vector3 startPos;
-    public bool openedByVariableButton;
+    private string representation;
+    private void Start()
+    {
+        //representation = "";
+    }
     public void OnRejectedFromLandingArea()
     {
-
-
         // if dragged from return value
         if (transform.parent != null)
         {
@@ -34,22 +36,18 @@ public class IntVal : MonoBehaviour, IDraggable
         if (transform.parent.GetComponent<IntVariableLandingArea>() != null)
         {
             // create duplicate
-            GameObject go = Instantiate(gameObject);
-            go.name = "IntVal";
+            GameObject dup = Instantiate(gameObject);
+            dup.name = "IntVal";
+            dup.GetComponent<IRepresentable>().setRepresentation(representation);
 
             // delete childred of the return value landing area
             ClearLandingArea();
 
-            // get current variable name
-            string varName = transform.parent.parent.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
-
-            if (openedByVariableButton)
-            {
-                // log in code
-                CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
-                codeLogger.SetExtra(varName);
-            }
-            return go;
+            // log in code
+            CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+            codeLogger.SetExtra(representation);
+            
+            return dup;
         }
         else
         {// if dragged from return value
@@ -65,5 +63,15 @@ public class IntVal : MonoBehaviour, IDraggable
         if(returnValueLandingArea!=null)
             foreach (Transform t in returnValueLandingArea.transform)
                 Destroy(t.gameObject);
+    }
+
+    public string getRepresentation()
+    {
+        return representation;
+    }
+
+    public void setRepresentation(string r)
+    {
+        representation = r;
     }
 }

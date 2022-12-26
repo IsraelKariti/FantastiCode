@@ -5,6 +5,10 @@ using UnityEngine;
 public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
 {
     public GameObject megaAsteriskPrefab;
+
+
+    public string representation;
+
     // check if the object that is being released on the landing area is supposed to be released there
     // for ex. operators can't be released on a return value (only int and address can!)
     public bool OnDraggableReleased(GameObject go)
@@ -41,6 +45,9 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
                     GameObject megaAsterisk = Instantiate(megaAsteriskPrefab, pos, transform.rotation);
                     megaAsterisk.name = "Asterisk";
 
+                    // forward to the mega asterisk the represntation of the return value (&var / malloc / ptr)
+                    megaAsterisk.GetComponent<IRepresentable>().setRepresentation(representation);
+
                     // set ticket to be child of mega asterisk
                     ticket.transform.parent = megaAsterisk.transform;
 
@@ -52,9 +59,7 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
 
                     // update logger
                     CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
-
                     string loggerExtra = codeLogger.GetExtra();
-
                     codeLogger.SetExtra("*" + loggerExtra);
                 }
             }
@@ -67,11 +72,17 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
         foreach (Transform child in transform)
         {
             if(!( child.gameObject==go) )// dont erase value if it is dragged from the return value and than released again on the return value
-                Destroy(child.gameObject);
+                Destroy(child.gameObject);// erase previous children
         }
         go.transform.parent = transform;
 
+        //get the representation of the object landed (int / ticket)
+        representation = go.GetComponent<IRepresentable>().getRepresentation();
 
+        // check if level finished
+        GameObject gameManagerGameObject = GameObject.Find("GameManager");
+        GameManager gameManager = gameManagerGameObject.GetComponent<GameManager>();
+        gameManager.CheckLevelComplete();
     }
 
 }

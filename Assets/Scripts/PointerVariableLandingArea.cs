@@ -42,6 +42,10 @@ public class PointerVariableLandingArea : MonoBehaviour, ILandingArea
         string loggerExtra = codeLogger.GetExtra();
 
         codeLogger.AddLine(varName + " = " + loggerExtra);
+
+        GameObject gameManagerGameObject = GameObject.Find("GameManager");
+        GameManager gameManager = gameManagerGameObject.GetComponent<GameManager>();
+        gameManager.CheckLevelComplete();
     }
 
 
