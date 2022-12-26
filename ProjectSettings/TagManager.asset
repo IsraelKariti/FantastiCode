@@ -9,6 +9,7 @@ TagManager:
   - duplicable
   - landingArea
   - cloud
+  - reset
   layers:
   - Default
   - TransparentFX
