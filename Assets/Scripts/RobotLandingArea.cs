@@ -64,10 +64,10 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         yield return AnimateRobotToLocalPos(go, robotDestPosAtTicket);
 
         // duplicate ticket
-        string ticketRepresentation = transform.parent.Find("Ticket").GetComponent<IRepresentable>().getRepresentation();
+        //string ticketRepresentation = transform.parent.GetComponent<IRepresentable>().getRepresentation();
         GameObject ticketDup = Instantiate(transform.parent.Find("Ticket").gameObject, go.transform);
         ticketDup.name = "Ticket";
-        ticketDup.GetComponent<IRepresentable>().setRepresentation(ticketRepresentation);
+        ticketDup.GetComponent<IRepresentable>().setRepresentation("malloc");
         ticketDup.transform.localPosition = new Vector3(2f, 0.1f, 2f);
 
         // animate robot to the return value
