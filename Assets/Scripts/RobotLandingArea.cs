@@ -59,6 +59,9 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         // check box
         transform.parent.Find("CheckBox/CheckMark").gameObject.SetActive(true);
 
+        // turn on the closed box
+        transform.parent.GetChild(1).gameObject.SetActive(true);
+
         // animate robot to ticket
         Vector3 robotDestPosAtTicket = new Vector3(-1f, 0.1f, -3);
         yield return AnimateRobotToLocalPos(go, robotDestPosAtTicket);
