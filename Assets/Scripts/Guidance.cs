@@ -11,8 +11,9 @@ public class Guidance : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            foreach(GameObject arrow in arrows)
-                arrow.SetActive(true); 
+            if(arrows!= null)
+                foreach(GameObject arrow in arrows)
+                    arrow.SetActive(true); 
             Destroy(gameObject);
         }
     }

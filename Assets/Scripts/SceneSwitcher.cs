@@ -48,7 +48,8 @@ public class SceneSwitcher : MonoBehaviour
     }
     public void SwitchTo8()
     {
-
+        goodWork.SetActive(false);
+        SceneManager.LoadScene(7);
     }
     public void SwitchTo9()
     {

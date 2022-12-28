@@ -4,10 +4,24 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System.Linq;
 public class GameManager : MonoBehaviour
 {
     public GameObject goodWork;
+
+    // called first
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // called second
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
+        int index = scene.buildIndex;
+    }
 
     public void CheckLevelComplete()
     {
@@ -36,9 +50,17 @@ public class GameManager : MonoBehaviour
             case 6:
                 CheckLevelComplete6();
                 return;
+            case 7:
+                CheckLevelComplete7();
+                return;
+            case 8:
+                CheckLevelComplete8();
+                return;
 
         }
     }
+
+
 
     private void CheckLevelComplete0()
     {
@@ -126,24 +148,42 @@ public class GameManager : MonoBehaviour
             Success();
         }
     }
+   
     private void CheckLevelComplete6()
+    {
+        MegaAsteriskOperator[] objects = FindObjectsOfType<MegaAsteriskOperator>();
+        // get int 2
+        if(objects.Length == 1)
+            Success();
+    }
+    private void CheckLevelComplete7()
+    {
+        // get int 2
+        GameObject go4 = GameObject.Find("IntVariable4/BoxOpen");
+
+        if (go4 == null)
+            return;
+
+        Success();
+    }
+    private void CheckLevelComplete8()
     {
         // get int 2
         GameObject go1 = GameObject.Find("IntVariable1/BoxOpen/LandingArea/IntVal/ValText");
         GameObject go3 = GameObject.Find("IntVariable3/BoxOpen/LandingArea/IntVal/ValText");
-        
+
         if (go1 == null || go3 == null)
             return;
-        
+
         // get the int value
         string val1 = go1.GetComponent<TMP_Text>().text;
         string val3 = go3.GetComponent<TMP_Text>().text;
 
-        if (val1.Equals("555") && val3.Equals("142")) {
+        if (val1.Equals("555") && val3.Equals("142"))
+        {
             Success();
         }
     }
-
     private void Success()
     {
         Debug.Log("success");

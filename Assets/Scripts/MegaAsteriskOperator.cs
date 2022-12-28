@@ -49,6 +49,11 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable, IRepresentable
         transforms[4] = GameObject.Find("PointerVariable/Cloud")?.transform;
 
         inCloudRadiuses = new int[5];
+
+        // check if level finished
+        GameObject gameManagerGameObject = GameObject.Find("GameManager");
+        GameManager gameManager = gameManagerGameObject.GetComponent<GameManager>();
+        gameManager.CheckLevelComplete();
     }
 
     public void Update()
