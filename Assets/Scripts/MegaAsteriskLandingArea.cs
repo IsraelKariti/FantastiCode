@@ -39,7 +39,11 @@ public class MegaAsteriskLandingArea : MonoBehaviour, ILandingArea
 
         transform.parent.GetComponent<IRepresentable>().setRepresentation("*" + addressRepresentaion);
 
+        // destroy the mega asterisk
         Destroy(go);
+
+        // check if the level is complete
+        GameObject.Find("GameManager").GetComponent<GameManager>().CheckLevelComplete();
     }
 
     private string ExtractTextFromMegaAsterisk(GameObject go)
