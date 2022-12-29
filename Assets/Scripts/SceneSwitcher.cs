@@ -59,6 +59,7 @@ public class SceneSwitcher : MonoBehaviour
     }
     public void SwitchTo10()
     {
-
+        goodWork.SetActive(false);
+        SceneManager.LoadScene(9);
     }
 }

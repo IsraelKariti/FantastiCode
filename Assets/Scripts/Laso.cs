@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +38,7 @@ public class Laso : MonoBehaviour
         float timePassed = 0;
 
         startScale = lassoBackgroundTransfrom.localScale;
-        endScale = startScale + new Vector3(.25f, 0, 0);
+        endScale = startScale + CalculateLasoScaleX();
 
         startPos = lassoBackgroundTransfrom.position;
         endPos = startPos + new Vector3(3.9f, 0, 0);
@@ -53,6 +54,20 @@ public class Laso : MonoBehaviour
             yield return null;
         }
     }
+
+    // calculate how much the laso png need to be streched to reach the ticket
+    // when the laso scale is 1 it will be of length 31 meters
+    private Vector3 CalculateLasoScaleX()
+    {
+        // calculate the number of meters between laso center and ticket center
+        float ticketCenter = transform.parent.parent.parent.Find("Ticket").position.x;
+        float lassoCenter = transform.position.x;
+        float diff = Math.Abs(ticketCenter - lassoCenter);
+        float portion = diff / 31f;
+
+        return new Vector3(portion, 0, 0);
+    }
+
     private IEnumerator UnStrechAnimWithTicket(GameObject dup)
     {
         Transform lassoBackgroundTransfrom = transform.Find("LasoBackground");
