@@ -41,7 +41,7 @@ public class Laso : MonoBehaviour
         endScale = startScale + CalculateLasoScaleX();
 
         startPos = lassoBackgroundTransfrom.position;
-        endPos = startPos + new Vector3(3.9f, 0, 0);
+        endPos = startPos + CalculateLasoShiftX();
 
         float fraction = 0;
 
@@ -66,6 +66,19 @@ public class Laso : MonoBehaviour
         float portion = diff / 31f;
 
         return new Vector3(portion, 0, 0);
+    }
+    
+    // calculate how much the laso png need to be streched to reach the ticket
+    // when the laso scale is 1 it will be of length 31 meters
+    private Vector3 CalculateLasoShiftX()
+    {
+        // calculate the number of meters between laso center and ticket center
+        float ticketCenter = transform.parent.parent.parent.Find("Ticket").position.x;
+        float lassoCenter = transform.position.x;
+        float diff = Math.Abs(ticketCenter - lassoCenter);
+        float shift = diff / 2f;
+
+        return new Vector3(shift, 0, 0);
     }
 
     private IEnumerator UnStrechAnimWithTicket(GameObject dup)
