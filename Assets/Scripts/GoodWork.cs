@@ -14,7 +14,7 @@ public class GoodWork : MonoBehaviour
         {
             int sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-            if (sceneIndex < 8)
+            if (sceneIndex < 9)
             {
 
                 gameObject.SetActive(false);

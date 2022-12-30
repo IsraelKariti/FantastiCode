@@ -74,4 +74,21 @@ public class IntVal : MonoBehaviour, IDraggable, IRepresentable
     {
         representation = r;
     }
+
+    public bool CheckIfPositionLegal(Vector3 pos)
+    {
+        Factory factory;
+        // if dragged from return value
+        if (transform.parent != null)
+        {
+            factory = transform.parent.GetComponent<Factory>();
+        }
+        else
+        {// if dragged from box //land //open // int //factory
+            factory = transform.parent.parent.parent.parent.GetComponent<Factory>();
+        }
+
+        bool res = factory.CheckIfPositionInsideFactory(pos);
+        return res;
+    }
 }

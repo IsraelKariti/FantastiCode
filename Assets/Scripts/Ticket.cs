@@ -69,6 +69,20 @@ public class Ticket : MonoBehaviour, IDraggable, IRepresentable
 
         // upon rejection ticket should get back to 
     }
+    public bool CheckIfPositionLegal(Vector3 pos)
+    {
+        Factory factory;
 
-
+        // check if the ticket is in a box 
+        if (transform.parent.GetComponent<PointerVariableLandingArea>() != null)
+        {
+            factory = transform.parent.parent.parent.parent.GetComponent<Factory>();
+        }
+        else// if the ticket is dragged from return value
+        {
+            factory = transform.parent.GetComponent<Factory>();
+        }
+        bool res = factory.CheckIfPositionInsideFactory(pos);
+        return res;
+    }
 }

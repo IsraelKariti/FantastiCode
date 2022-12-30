@@ -9,9 +9,9 @@ public class PointerVariableLandingArea : MonoBehaviour, ILandingArea
     public bool OnDraggableReleased(GameObject go)
     {
         // how do i check if the game object is an int???
-        PointerVal pointerVal = go.GetComponent<PointerVal>();
+        //PointerVal pointerVal = go.GetComponent<PointerVal>();
         Ticket ticket = go.GetComponent<Ticket>();
-        if (pointerVal != null || ticket!=null)
+        if ( ticket!=null)
             return true;
         else
             return false;

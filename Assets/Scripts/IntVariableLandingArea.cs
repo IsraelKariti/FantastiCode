@@ -20,24 +20,37 @@ public class IntVariableLandingArea : MonoBehaviour, ILandingArea
     // implemantaion of ILandingArea
     public void OnLandingArea(GameObject go)
     {
-        // get int value
-        string str = go.transform.Find("ValText").GetComponent<TMP_Text>().text;
-        string landingRepresention = go.GetComponent<IRepresentable>().getRepresentation();
-
-        //set string to this val(for visual)
-        GameObject txt = transform.Find("IntVal/ValText").gameObject;
-        txt.GetComponent<TMP_Text>().text = str;
+        CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
 
         // get current variable name (from top container variable - because value may be missing)
         string currRepresentation = transform.parent.parent.GetComponent<IRepresentable>().getRepresentation();
 
-        // update the code logger
-        CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+        // get landing draggable variable name
+        string landingRepresention = go.GetComponent<IRepresentable>().getRepresentation();
 
-        codeLogger.AddLine(currRepresentation + " = " + landingRepresention);
+        // check if the released draggable is different from the landing area
+        if (currRepresentation.Equals(landingRepresention) == false) 
+        {
+            // get int value
+            string str = go.transform.Find("ValText").GetComponent<TMP_Text>().text;
 
+            //set string to this val(for visual)
+            GameObject txt = transform.Find("IntVal/ValText").gameObject;
+            txt.GetComponent<TMP_Text>().text = str;
+
+            // update the code logger
+            codeLogger.AddLine(currRepresentation + " = " + landingRepresention);
+
+        }
+        else// clean the logger from the dragged extra
+        {
+            codeLogger.ClearExtra();
+        }
+
+        // destroy draggable
         Destroy(go);
 
+        // check if level complete
         GameObject.Find("GameManager").GetComponent<GameManager>().CheckLevelComplete();
 
     }

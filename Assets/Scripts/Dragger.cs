@@ -45,7 +45,14 @@ public class Dragger : MonoBehaviour
 
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
 
-            selectedObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
+            // check if the position is allowed for this draggable
+            IDraggable draggable = selectedObject.GetComponent<IDraggable>();
+            bool isLegal = draggable.CheckIfPositionLegal(worldPosition);
+
+            if (isLegal)// if the position is allowed for this draggable
+                selectedObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
+            else// if this position is not allowed for this draggable
+                draggable.OnRejectedFromLandingArea();
         }
 
         if (Input.GetMouseButtonUp(0))

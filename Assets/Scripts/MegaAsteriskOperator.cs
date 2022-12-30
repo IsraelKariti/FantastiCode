@@ -120,4 +120,9 @@ public class MegaAsteriskOperator : MonoBehaviour, IDraggable, IRepresentable
     {
         representation = r;
     }
+
+    public bool CheckIfPositionLegal(Vector3 pos)
+    {
+        return true;
+    }
 }

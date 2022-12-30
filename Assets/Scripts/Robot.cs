@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Robot : MonoBehaviour, IDraggable
 {
+    public bool CheckIfPositionLegal(Vector3 pos)
+    {
+        Factory factory = transform.parent.GetComponent<Factory>();
+        bool res = factory.CheckIfPositionInsideFactory(pos);
+        return res;
+    }
+
     public GameObject OnDragged()
     {
         GameObject go = Instantiate(gameObject);

@@ -15,11 +15,11 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
     {
         // how do i check if the game object is an int???
         IntVal intVal = go.GetComponent<IntVal>();
-        PointerVal pointerVal = go.GetComponent<PointerVal>();
+        //PointerVal pointerVal = go.GetComponent<PointerVal>();
         AsteriskOperator asterisk = go.GetComponent<AsteriskOperator>();
         Ticket ticket = go.GetComponent<Ticket>();
 
-        if (intVal != null || pointerVal != null|| asterisk != null || ticket != null)
+        if (intVal != null || asterisk != null || ticket != null)
             return true;
         else
             return false;
