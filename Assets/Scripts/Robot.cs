@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class Robot : MonoBehaviour, IDraggable
 {
-    public bool CheckIfPositionLegal(Vector3 pos)
+    public virtual bool CheckIfPositionLegal(Vector3 pos)
     {
-        Factory factory = transform.parent.GetComponent<Factory>();
-        bool res = factory.CheckIfPositionInsideFactory(pos);
-        return res;
+        return true;
     }
 
-    public GameObject OnDragged()
+    public virtual GameObject OnDragged()
     {
-        GameObject go = Instantiate(gameObject);
+        GameObject go = Instantiate(gameObject, transform.position, transform.rotation);
         go.name = "Robot";
-
 
         return go;
     }
 
-    public void OnRejectedFromLandingArea()
+    public virtual void OnRejectedFromLandingArea()
     {
         Destroy(gameObject); 
     }

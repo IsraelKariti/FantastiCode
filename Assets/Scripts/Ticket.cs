@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Ticket : MonoBehaviour, IDraggable, IRepresentable
 {
-    Vector3 localPos;
-    string representation;
+    protected Vector3 localPos;
+    protected string representation;
 
     public string getRepresentation()
     {
@@ -19,12 +19,12 @@ public class Ticket : MonoBehaviour, IDraggable, IRepresentable
     }
 
     // ticket should only be dragged from return value - therefore it should be dragged itself without duplicating
-    public GameObject OnDragged()
+    public virtual GameObject OnDragged()
     {
         localPos = transform.localPosition;
 
         // check if the ticket is in a box - return duplicate
-        if (transform.parent.GetComponent<PointerVariableLandingArea>() != null)
+        if (transform.parent.GetComponent<TicketLandingArea>() != null)
         {
             // create duplice
             GameObject dup = Instantiate(gameObject);
@@ -49,7 +49,7 @@ public class Ticket : MonoBehaviour, IDraggable, IRepresentable
         return null;
     }
 
-    public void OnRejectedFromLandingArea()
+    public virtual void OnRejectedFromLandingArea()
     {
         // check if ticket is dragged from a box
         if (transform.parent != null)
@@ -63,26 +63,10 @@ public class Ticket : MonoBehaviour, IDraggable, IRepresentable
             codeLogger.ClearExtra();
 
             Destroy(gameObject);
-
         }
-
-
-        // upon rejection ticket should get back to 
     }
-    public bool CheckIfPositionLegal(Vector3 pos)
+    public virtual bool CheckIfPositionLegal(Vector3 pos)
     {
-        Factory factory;
-
-        // check if the ticket is in a box 
-        if (transform.parent.GetComponent<PointerVariableLandingArea>() != null)
-        {
-            factory = transform.parent.parent.parent.parent.GetComponent<Factory>();
-        }
-        else// if the ticket is dragged from return value
-        {
-            factory = transform.parent.GetComponent<Factory>();
-        }
-        bool res = factory.CheckIfPositionInsideFactory(pos);
-        return res;
+        return true;
     }
 }

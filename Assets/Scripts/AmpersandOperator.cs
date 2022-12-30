@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class AmpersandOperator : MonoBehaviour, IDraggable
 {
-    public bool CheckIfPositionLegal(Vector3 pos)
+    public virtual bool CheckIfPositionLegal(Vector3 pos)
     {
-        return transform.parent.GetComponent<Factory>().CheckIfPositionInsideFactory(pos);
+            return true;
     }
 
-    public GameObject OnDragged()
+    public virtual GameObject OnDragged()
     {
-        GameObject go = Instantiate(gameObject);
+        GameObject go = Instantiate(gameObject, transform.position, transform.rotation);
         go.name = "Ampersand";
         return go;
     }
-    public void OnRejectedFromLandingArea()
+    public virtual void OnRejectedFromLandingArea()
     {
         Destroy(gameObject);
     }

@@ -31,12 +31,25 @@ public class IntVariableLandingArea : MonoBehaviour, ILandingArea
         // check if the released draggable is different from the landing area
         if (currRepresentation.Equals(landingRepresention) == false) 
         {
-            // get int value
-            string str = go.transform.Find("ValText").GetComponent<TMP_Text>().text;
+            
+            // check if there is already an int on the landing area (the box is occupied)
+            Transform intVal = transform.Find("IntVal");
+            if(intVal != null)
+            {
+                // get int value
+                string str = go.transform.Find("ValText").GetComponent<TMP_Text>().text;
 
-            //set string to this val(for visual)
-            GameObject txt = transform.Find("IntVal/ValText").gameObject;
-            txt.GetComponent<TMP_Text>().text = str;
+                //set string to this val(for visual)
+                GameObject txt = transform.Find("IntVal/ValText").gameObject;
+                txt.GetComponent<TMP_Text>().text = str;
+
+                // destroy draggable
+                Destroy(go);
+            }
+            else// there is no int val already (the box is empty)
+            {
+                go.transform.parent = transform;
+            }
 
             // update the code logger
             codeLogger.AddLine(currRepresentation + " = " + landingRepresention);
@@ -45,10 +58,11 @@ public class IntVariableLandingArea : MonoBehaviour, ILandingArea
         else// clean the logger from the dragged extra
         {
             codeLogger.ClearExtra();
+            // destroy draggable
+            Destroy(go);
         }
 
-        // destroy draggable
-        Destroy(go);
+        
 
         // check if level complete
         GameObject.Find("GameManager").GetComponent<GameManager>().CheckLevelComplete();

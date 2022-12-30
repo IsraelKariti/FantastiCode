@@ -1,18 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class IntVal : MonoBehaviour, IDraggable, IRepresentable
+public class IntValFactory : IntVal
 {
-    protected Vector3 startPos;
-    protected string representation;
-
-    public virtual void OnRejectedFromLandingArea()
+    public override void OnRejectedFromLandingArea()
     {
         // if dragged from return value
-        if (transform.parent != null)
+        if (transform.parent != null && transform.parent.GetComponent<ReturnValueLandingArea>() != null)
         {
             transform.position = startPos;
         }
@@ -26,7 +21,8 @@ public class IntVal : MonoBehaviour, IDraggable, IRepresentable
 
         }
     }
-    public virtual GameObject OnDragged()
+
+    public override GameObject OnDragged()
     {
         // if dragged from box
         if (transform.parent.GetComponent<IntVariableLandingArea>() != null)
@@ -40,9 +36,9 @@ public class IntVal : MonoBehaviour, IDraggable, IRepresentable
             ClearLandingArea();
 
             // log in code
-            CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+            CodeLogger codeLogger = transform.parent.parent.parent.parent.parent.Find("CodeLogger").GetComponent<CodeLogger>();
             codeLogger.SetExtra(representation);
-            
+
             return dup;
         }
         else
@@ -52,27 +48,29 @@ public class IntVal : MonoBehaviour, IDraggable, IRepresentable
         }
     }
 
-    protected virtual void ClearLandingArea()
+    protected override void ClearLandingArea()
     {
-        GameObject returnValueLandingArea = GameObject.Find("ReturnValue/LandingArea");
+        GameObject returnValueLandingArea = transform.parent.parent.parent.parent.parent.Find("LandingArea").gameObject;
 
-        if(returnValueLandingArea!=null)
+        if (returnValueLandingArea != null)
             foreach (Transform t in returnValueLandingArea.transform)
                 Destroy(t.gameObject);
     }
 
-    public string getRepresentation()
+    public override bool CheckIfPositionLegal(Vector3 pos)
     {
-        return representation;
-    }
+        Factory factory;
+        // if dragged from return value
+        if (transform.parent != null)
+        {
+            factory = transform.parent.GetComponent<Factory>();
+        }
+        else
+        {// if dragged from box (//land //open // int //factory)
+            factory = transform.parent.parent.parent.parent.GetComponent<Factory>();
+        }
 
-    public void setRepresentation(string r)
-    {
-        representation = r;
-    }
-
-    public virtual bool CheckIfPositionLegal(Vector3 pos)
-    {
-        return true;
+        bool res = factory.CheckIfPositionInsideFactory(pos);
+        return res;
     }
 }

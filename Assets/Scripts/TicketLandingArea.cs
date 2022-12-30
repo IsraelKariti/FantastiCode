@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-public class PointerVariableLandingArea : MonoBehaviour, ILandingArea
+public class TicketLandingArea : MonoBehaviour, ILandingArea
 {
     // check if the object that is being released on the landing area is supposed to be released there
     // for ex. pointer can't be released on an int
