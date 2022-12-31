@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
         int index = scene.buildIndex;
     }
 
@@ -56,16 +54,19 @@ public class GameManager : MonoBehaviour
             case 8:
                 CheckLevelComplete8();
                 return;
+            case 9:
+                CheckLevelComplete9();
+                return;
 
         }
     }
 
 
-
     private void CheckLevelComplete0()
     {
         // get int 2
-        GameObject go = GameObject.Find("IntVariable2/BoxOpen/LandingArea/IntVal/ValText");
+        GameObject var = GameObject.Find("IntVariable2");
+        GameObject go = var.transform.Find("BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
         if (go == null)
             return;
         // get the int value
@@ -78,7 +79,8 @@ public class GameManager : MonoBehaviour
     private void CheckLevelComplete1()
     {
         // get int 2
-        GameObject go = GameObject.Find("ReturnValue/LandingArea/IntVal/ValText");
+        GameObject var = GameObject.Find("ReturnValue");
+        GameObject go = var.transform.Find("LandingArea/IntVal/ValText")?.gameObject;
         if (go == null)
             return;
         // get the int value
@@ -91,7 +93,8 @@ public class GameManager : MonoBehaviour
     private void CheckLevelComplete2()
     {
         // get int 2
-        GameObject go = GameObject.Find("ReturnValue/LandingArea/Ticket/Text (TMP)");
+        GameObject var = GameObject.Find("ReturnValue");
+        GameObject go = var.transform.Find("LandingArea/Ticket/Text (TMP)")?.gameObject;
 
         if (go == null)
             return;
@@ -119,7 +122,8 @@ public class GameManager : MonoBehaviour
     private void CheckLevelComplete4()
     {
         // get int 2
-        GameObject go = GameObject.Find("PointerVariable/BoxOpen/LandingArea/Ticket/Text (TMP)");
+        GameObject var = GameObject.Find("PointerVariable");
+        GameObject go = var.transform.Find("BoxOpen/LandingArea/Ticket/Text (TMP)")?.gameObject;
 
         if (go == null)
             return;
@@ -134,9 +138,11 @@ public class GameManager : MonoBehaviour
     private void CheckLevelComplete5()
     {
         // get int 2
-        GameObject go1 = GameObject.Find("IntVariable1/BoxOpen/LandingArea/IntVal/ValText");
-        GameObject go3 = GameObject.Find("IntVariable3/BoxOpen/LandingArea/IntVal/ValText");
+        GameObject var1 = GameObject.Find("IntVariable1");
+        GameObject var3 = GameObject.Find("IntVariable3");
 
+        GameObject go1 = var1.transform.Find("BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
+        GameObject go3 = var3.transform.Find("BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
         if (go1 == null || go3 == null)
             return;
 
@@ -159,18 +165,21 @@ public class GameManager : MonoBehaviour
     private void CheckLevelComplete7()
     {
         // get int 2
-        GameObject go4 = GameObject.Find("IntVariable4/BoxOpen");
+        GameObject var4 = GameObject.Find("IntVariable4");
+        GameObject go4 = var4.transform.Find("BoxOpen")?.gameObject;
 
-        if (go4 == null)
-            return;
+        if (go4.activeSelf)
+            Success();
 
-        Success();
     }
     private void CheckLevelComplete8()
     {
         // get int 2
-        GameObject go1 = GameObject.Find("IntVariable1/BoxOpen/LandingArea/IntVal/ValText");
-        GameObject go3 = GameObject.Find("IntVariable3/BoxOpen/LandingArea/IntVal/ValText");
+        GameObject var1 = GameObject.Find("IntVariable1");
+        GameObject var3 = GameObject.Find("IntVariable3");
+
+        GameObject go1 = var1.transform.Find("BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
+        GameObject go3 = var3.transform.Find("BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
 
         if (go1 == null || go3 == null)
             return;
@@ -183,6 +192,11 @@ public class GameManager : MonoBehaviour
         {
             Success();
         }
+    }
+
+    private void CheckLevelComplete9()
+    {
+        throw new NotImplementedException();
     }
     private void Success()
     {

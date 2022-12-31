@@ -31,18 +31,19 @@ public class TicketLandingArea : MonoBehaviour, ILandingArea
         go.transform.parent = transform;
         go.transform.localPosition = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y, -1f);
 
-        // update logger
-
         // get current variable name
         string varName = transform.parent.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
 
         // update the code logger
         CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
-
         string loggerExtra = codeLogger.GetExtra();
-
         codeLogger.AddLine(varName + " = " + loggerExtra);
 
+        // close the box
+        transform.parent.parent.Find("BoxOpen").gameObject.SetActive(false);
+        transform.parent.parent.Find("BoxClosed").gameObject.SetActive(true);
+
+        // check if level complete
         GameObject gameManagerGameObject = GameObject.Find("GameManager");
         GameManager gameManager = gameManagerGameObject.GetComponent<GameManager>();
         gameManager.CheckLevelComplete();

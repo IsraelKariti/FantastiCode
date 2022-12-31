@@ -42,7 +42,15 @@ public class IntVal : MonoBehaviour, IDraggable, IRepresentable
             // log in code
             CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
             codeLogger.SetExtra(representation);
-            
+
+            // close box
+            transform.parent.parent.parent.Find("BoxOpen").gameObject.SetActive(false);
+            transform.parent.parent.parent.Find("BoxClosed").gameObject.SetActive(true);
+
+
+            // reset representation
+            transform.parent.parent.parent.GetComponent<IRepresentable>().setRepresentation("");
+
             return dup;
         }
         else

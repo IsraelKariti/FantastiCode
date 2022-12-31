@@ -23,5 +23,12 @@ public class Variable : MonoBehaviour, IRepresentable
             IRepresentable representable = intValTransform.GetComponent<IRepresentable>();
             representable.setRepresentation(r);
         }
+        // set also on the actual value if exist
+        Transform ticketValTransform = transform.Find("BoxOpen/LandingArea/Ticket");
+        if (ticketValTransform != null)
+        {
+            IRepresentable representable = ticketValTransform.GetComponent<IRepresentable>();
+            representable.setRepresentation(r);
+        }
     }
 }

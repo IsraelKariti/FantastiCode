@@ -62,7 +62,11 @@ public class IntVariableLandingArea : MonoBehaviour, ILandingArea
             Destroy(go);
         }
 
-        
+        // close the box
+        // close box
+        transform.parent.parent.Find("BoxOpen").gameObject.SetActive(false);
+        transform.parent.parent.Find("BoxClosed").gameObject.SetActive(true);
+
 
         // check if level complete
         GameObject.Find("GameManager").GetComponent<GameManager>().CheckLevelComplete();

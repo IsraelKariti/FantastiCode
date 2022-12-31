@@ -9,41 +9,33 @@ public class VariableButton :MonoBehaviour, IPressable
     public GameObject openBox;
     public GameObject landingArea;
 
-    private bool isOpen = false;
-
     public void OnPressed()
     {
-        isOpen = !isOpen;
+        // check if the box is open
+        Transform boxOpenTransform = transform.parent.Find("BoxOpen");
 
-        closedBox.SetActive(!isOpen);
-        openBox.SetActive(isOpen);
-        landingArea.SetActive(isOpen);
 
-        // when a box is opening set the representaion (how it was opened)
-        if (isOpen)
+        // when a box is open - close it!
+        if (boxOpenTransform != null && boxOpenTransform.gameObject.active == true)// if a box is already opened when the button is clicked
         {
+            closedBox.SetActive(true);
+            openBox.SetActive(false);
+            landingArea.SetActive(false);
+
+            transform.parent.GetComponent<IRepresentable>().setRepresentation("");
+        }
+        else// when the box is closed - open it!
+        {
+            
+            closedBox.SetActive(false);
+            openBox.SetActive(true);
+            landingArea.SetActive(true);
+
             // get var name
             string varName = transform.Find("Text").GetComponent<TMP_Text>().text;
 
             // set representation in the container variable
             transform.parent.GetComponent<IRepresentable>().setRepresentation(varName);
-
-            // let it know that it was opened by button
-            Transform intValueTransform = transform.parent.Find("BoxOpen/LandingArea/IntVal");
-            if (intValueTransform != null)
-            {
-                // set representation in the actual value
-                GameObject intValGameObject = intValueTransform.gameObject;
-                intValGameObject.GetComponent<IRepresentable>().setRepresentation(varName);
-            }
-
-            Transform ticketValueTransform = transform.parent.Find("BoxOpen/LandingArea/Ticket");
-            if (ticketValueTransform != null)
-            {
-                // set representation in the actual value
-                GameObject ticketValGameObject = ticketValueTransform.gameObject;
-                ticketValGameObject.GetComponent<IRepresentable>().setRepresentation(varName);
-            }
         }
     }
 }
