@@ -2295,7 +2295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 359909639}
   - component: {fileID: 359909641}
-  - component: {fileID: 359909640}
+  - component: {fileID: 359909642}
   m_Layer: 0
   m_Name: RobotLandingArea
   m_TagString: landingArea
@@ -2318,18 +2318,6 @@ Transform:
   m_Father: {fileID: 1844926252}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &359909640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359909638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5308888cb7ca74f999b1053823bcd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &359909641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2343,6 +2331,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &359909642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359909638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07ccbddc801c9443b59597d070cbd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &361863504
 GameObject:
   m_ObjectHideFlags: 0
@@ -6277,7 +6277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905512161}
   - component: {fileID: 905512163}
-  - component: {fileID: 905512162}
+  - component: {fileID: 905512164}
   m_Layer: 0
   m_Name: RobotLandingArea
   m_TagString: landingArea
@@ -6300,18 +6300,6 @@ Transform:
   m_Father: {fileID: 1587742909}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &905512162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905512160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5308888cb7ca74f999b1053823bcd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &905512163
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6325,6 +6313,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &905512164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905512160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07ccbddc801c9443b59597d070cbd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &938528246
 GameObject:
   m_ObjectHideFlags: 0
@@ -8390,7 +8390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1249451538}
   - component: {fileID: 1249451540}
-  - component: {fileID: 1249451539}
+  - component: {fileID: 1249451541}
   m_Layer: 0
   m_Name: RobotLandingArea
   m_TagString: landingArea
@@ -8413,18 +8413,6 @@ Transform:
   m_Father: {fileID: 554261619}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1249451539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249451537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5308888cb7ca74f999b1053823bcd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1249451540
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8438,6 +8426,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1249451541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249451537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07ccbddc801c9443b59597d070cbd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1253290628
 GameObject:
   m_ObjectHideFlags: 0
@@ -8783,7 +8783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1292319324}
   - component: {fileID: 1292319326}
-  - component: {fileID: 1292319325}
+  - component: {fileID: 1292319327}
   m_Layer: 0
   m_Name: RobotLandingArea
   m_TagString: landingArea
@@ -8806,18 +8806,6 @@ Transform:
   m_Father: {fileID: 1913234882}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1292319325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292319323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5308888cb7ca74f999b1053823bcd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1292319326
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8831,6 +8819,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1292319327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292319323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07ccbddc801c9443b59597d070cbd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1312221645
 GameObject:
   m_ObjectHideFlags: 0
@@ -13133,7 +13133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091839497}
   - component: {fileID: 2091839499}
-  - component: {fileID: 2091839498}
+  - component: {fileID: 2091839500}
   m_Layer: 0
   m_Name: RobotLandingArea
   m_TagString: landingArea
@@ -13156,18 +13156,6 @@ Transform:
   m_Father: {fileID: 11278861}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2091839498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091839496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5308888cb7ca74f999b1053823bcd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2091839499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13181,3 +13169,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2091839500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091839496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07ccbddc801c9443b59597d070cbd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

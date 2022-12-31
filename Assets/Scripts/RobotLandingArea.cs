@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class RobotLandingArea : MonoBehaviour, ILandingArea
 {
-    Vector3 robotDestPosAtCheckBox;
-    Vector3 robotDestPosAtTicket;
 
     private void Start()
     {
@@ -14,7 +12,7 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         BoxCollider boxCollider = GetComponent<BoxCollider>();
         boxCollider.size = new Vector3(6, boxCollider.size.y, boxCollider.size.z);
     }
-    public bool OnDraggableReleased(GameObject go)
+    public virtual bool OnDraggableReleased(GameObject go)
     {
         Robot robot = go.GetComponent<Robot>();
 
@@ -34,7 +32,7 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
             return false;
     }
 
-    public void OnLandingArea(GameObject go)
+    public virtual void OnLandingArea(GameObject go)
     {
         //
         Debug.Log("robot landed");
@@ -49,22 +47,26 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         codeLogger.SetExtra("malloc");
     }
 
-    private IEnumerator AnimateRobot(GameObject go)
+    protected virtual IEnumerator AnimateRobot(GameObject go)
     {
+        // get the empty check mark
+        Transform checkMarkTransform = transform.parent.Find("CheckBox/CheckMark");
+        Bounds checkMarkBounds = checkMarkTransform.GetComponent<SpriteRenderer>().bounds;
         // animate robot to check box
-        Vector3 robotDestPosAtCheckBox = new Vector3(0.7f, 0, -3);
+        Vector3 robotDestPosAtCheckBox = checkMarkBounds.center - new Vector3(checkMarkBounds.size.x, 0, 0); 
 
-        yield return AnimateRobotToLocalPos(go, robotDestPosAtCheckBox);
+        yield return AnimateRobotToGlobalPos(go, robotDestPosAtCheckBox);
 
         // check box
-        transform.parent.Find("CheckBox/CheckMark").gameObject.SetActive(true);
+        checkMarkTransform.gameObject.SetActive(true);
 
         // turn on the closed box
         transform.parent.GetChild(1).gameObject.SetActive(true);
 
         // animate robot to ticket
-        Vector3 robotDestPosAtTicket = new Vector3(-1f, 0.1f, -3);
-        yield return AnimateRobotToLocalPos(go, robotDestPosAtTicket);
+        Bounds ticketBounds = transform.parent.Find("Ticket").GetComponent<SpriteRenderer>().bounds;
+        Vector3 robotDestPosAtTicket = ticketBounds.center - new Vector3(ticketBounds.size.x, 0, 0);
+        yield return AnimateRobotToGlobalPos(go, robotDestPosAtTicket);
 
         // duplicate ticket
         //string ticketRepresentation = transform.parent.GetComponent<IRepresentable>().getRepresentation();
@@ -97,7 +99,7 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         yield return null;
     }
 
-    private IEnumerator AnimateRobotToLocalPos(GameObject go, Vector3 dest)
+    protected virtual IEnumerator AnimateRobotToLocalPos(GameObject go, Vector3 dest)
     {
         float timePassed = 0;
 
@@ -117,7 +119,7 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         }
 
     }
-    private IEnumerator AnimateRobotToGlobalPos(GameObject go, Vector3 dest)
+    protected virtual IEnumerator AnimateRobotToGlobalPos(GameObject go, Vector3 dest)
     {
         float timePassed = 0;
 
