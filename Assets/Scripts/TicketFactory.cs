@@ -72,7 +72,7 @@ public class TicketFactory : Ticket
         {
             factory = transform.parent.GetComponent<Factory>();
         }
-        bool res = factory.CheckIfPositionInsideFactory(pos);
+        bool res = factory.CheckIfPositionInsideFactoryOrNeutralArea(pos);
         return res;
     }
 }

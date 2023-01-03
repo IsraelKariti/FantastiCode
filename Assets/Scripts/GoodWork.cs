@@ -13,8 +13,8 @@ public class GoodWork : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-            if (sceneIndex < 9)
+            
+            if (sceneIndex < SceneManager.sceneCountInBuildSettings-1)
             {
 
                 gameObject.SetActive(false);

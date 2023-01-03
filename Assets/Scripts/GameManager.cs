@@ -5,20 +5,49 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using Unity.Services.Core;
+using Unity.Services.Analytics;
+using Unity.Services.Core.Environments;
 public class GameManager : MonoBehaviour
 {
     public GameObject goodWork;
-
-    // called first
-    void OnEnable()
+    string consentIdentifier;
+    bool isOptInConsentRequired;
+    async void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+        try
+        {
+            await UnityServices.InitializeAsync();
+            //List<string> consentIdentifiers = await AnalyticsService.Instance.CheckForRequiredConsents();
+            List<string> consentIdentifiers = await Events.CheckForRequiredConsents();
+            if (consentIdentifiers.Count > 0)
+            {
+                consentIdentifier = consentIdentifiers[0];
+                isOptInConsentRequired = consentIdentifier == "pipl";
+            }
+            if (isOptInConsentRequired)
+            {
+                Events.ProvideOptInConsent(consentIdentifier, false);
+            }
+        }
+        catch (ConsentCheckException e)
+        {
+            // Something went wrong when checking the GeoIP, check the e.Reason and handle appropriately.
+        }
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "levelStarted", buildIndex }
+        };
+        // The ‘myEvent’ event will get queued up and sent every minute
+       AnalyticsService.Instance.CustomData("myEvent", parameters);
+       //Events.CustomData("myEvent", parameters);
 
-    // called second
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        int index = scene.buildIndex;
+        // Optional - You can call Events.Flush() to send the event immediately
+        //AnalyticsService.Instance.Flush();
+        Events.Flush();
+
+
     }
 
     public void CheckLevelComplete()
@@ -56,6 +85,9 @@ public class GameManager : MonoBehaviour
                 return;
             case 9:
                 CheckLevelComplete9();
+                return;
+            case 10:
+                CheckLevelComplete10();
                 return;
 
         }
@@ -196,8 +228,29 @@ public class GameManager : MonoBehaviour
 
     private void CheckLevelComplete9()
     {
-        throw new NotImplementedException();
+        GameObject factory1 = GameObject.Find("Factory2");
+        Transform inputTransform = factory1.transform.Find("Input");
+        Transform inputLandingArea = inputTransform.Find("LandingArea");
+        if (inputLandingArea.childCount > 0)
+            Success();
     }
+
+    private void CheckLevelComplete10()
+    {
+        GameObject factory2 = GameObject.Find("Factory2");
+        GameObject go3 = factory2.transform.Find("Variables/IntVariable3/BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
+
+        if (go3 == null)
+            return;
+
+        string val3 = go3.GetComponent<TMP_Text>().text;
+
+        if (val3.Equals("989"))
+        {
+            Success();
+        }
+    }
+
     private void Success()
     {
         Debug.Log("success");

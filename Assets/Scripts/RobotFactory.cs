@@ -7,7 +7,7 @@ public class RobotFactory : Robot
     public override bool CheckIfPositionLegal(Vector3 pos)
     {
         Factory factory = transform.parent.GetComponent<Factory>();
-        bool res = factory.CheckIfPositionInsideFactory(pos);
+        bool res = factory.CheckIfPositionInsideFactoryOrNeutralArea(pos);
         return res;
     }
 

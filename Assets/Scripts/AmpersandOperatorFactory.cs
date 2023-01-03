@@ -7,7 +7,7 @@ public class AmpersandOperatorFactory : AmpersandOperator
     public override bool CheckIfPositionLegal(Vector3 pos)
     {
         // check if the ampersand is in factory
-        return transform.parent.GetComponent<Factory>().CheckIfPositionInsideFactory(pos);
+        return transform.parent.GetComponent<Factory>().CheckIfPositionInsideFactoryOrNeutralArea(pos);
     }
 
     public override GameObject OnDragged()

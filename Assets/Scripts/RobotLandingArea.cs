@@ -35,7 +35,7 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
     public virtual void OnLandingArea(GameObject go)
     {
         //
-        Debug.Log("robot landed");
+        //Debug.Log("robot landed");
 
         // make robot the child of the landing area
         go.transform.parent = transform;
