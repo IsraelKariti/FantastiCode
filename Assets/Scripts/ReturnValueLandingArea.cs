@@ -42,7 +42,7 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
                 {
                     // create mega-asterisk
                     Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 3);
-                    GameObject megaAsterisk = Instantiate(megaAsteriskPrefab, pos, transform.rotation);
+                    GameObject megaAsterisk = Instantiate(megaAsteriskPrefab, pos, transform.rotation, transform);
                     megaAsterisk.name = "Asterisk";
 
                     // forward to the mega asterisk the represntation of the return value (&var / malloc / ptr)

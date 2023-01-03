@@ -11,7 +11,7 @@ public class MegaAsteriskLandingArea : MonoBehaviour, ILandingArea
         // get the address of this box
         currAddress = transform.parent.Find("Ticket/Text (TMP)").GetComponent<TMP_Text>().text;
     }
-    public bool OnDraggableReleased(GameObject go)
+    public virtual bool OnDraggableReleased(GameObject go)
     {
         MegaAsteriskOperator megaAsteriskOperator = go.GetComponent<MegaAsteriskOperator>();
         if (megaAsteriskOperator != null)
@@ -28,7 +28,7 @@ public class MegaAsteriskLandingArea : MonoBehaviour, ILandingArea
             return false;
     }
 
-    public void OnLandingArea(GameObject go)
+    public virtual void OnLandingArea(GameObject go)
     {
         // open the box
         transform.parent.Find("BoxOpen").gameObject.SetActive(true);

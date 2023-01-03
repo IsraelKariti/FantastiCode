@@ -39,7 +39,7 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
         codeLogger.SetExtra("&" + varName);
     }
 
-    private IEnumerator CaptureAddressInsertToReturnValue(GameObject go)
+    protected IEnumerator CaptureAddressInsertToReturnValue(GameObject go)
     {
         Laso laso = go.transform.Find("Laso").GetComponent<Laso>();
 
@@ -50,7 +50,7 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
         Destroy(transform.Find("Ampersand").gameObject);
 
         // delete all children of return value
-        Transform returnValueLandingAreaTransform = GameObject.Find("ReturnValue/LandingArea").transform;
+        Transform returnValueLandingAreaTransform = GetReturnValueLandingAreaTransform();
         foreach (Transform t in returnValueLandingAreaTransform)
             Destroy(t.gameObject);
 
@@ -92,5 +92,9 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
 
         // destroy all children on return value
     }
-
+    protected virtual Transform GetReturnValueLandingAreaTransform()
+    {
+        Transform returnValueLandingAreaTransform = GameObject.Find("ReturnValue/LandingArea").transform;
+        return returnValueLandingAreaTransform;
+    }
 }
