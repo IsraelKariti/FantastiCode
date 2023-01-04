@@ -36,6 +36,11 @@ public class VariableButton :MonoBehaviour, IPressable
 
             // set representation in the container variable
             transform.parent.GetComponent<IRepresentable>().setRepresentation(varName);
+
+            // check if level is complete
+            GameObject gameManagerGameObject = GameObject.Find("GameManager");
+            GameManager gameManager = gameManagerGameObject.GetComponent<GameManager>();
+            gameManager.CheckLevelComplete();
         }
     }
 }
