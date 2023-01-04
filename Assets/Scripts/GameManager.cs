@@ -89,12 +89,27 @@ public class GameManager : MonoBehaviour
             case 10:
                 CheckLevelComplete10();
                 return;
+            case 11:
+                CheckLevelComplete11();
+                return;
+            case 12:
+                CheckLevelComplete12();
+                return;
 
         }
     }
 
-
     private void CheckLevelComplete0()
+    {
+        GameObject var = GameObject.Find("IntVariable1");
+        GameObject go = var.transform.Find("BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
+        if (go == null)
+            return;
+
+        Success();
+    }
+
+    private void CheckLevelComplete1()
     {
         // get int 2
         GameObject var = GameObject.Find("IntVariable2");
@@ -108,7 +123,7 @@ public class GameManager : MonoBehaviour
             Success();
         }
     }
-    private void CheckLevelComplete1()
+    private void CheckLevelComplete2()
     {
         // get int 2
         GameObject var = GameObject.Find("ReturnValue");
@@ -122,7 +137,7 @@ public class GameManager : MonoBehaviour
             Success();
         }
     }
-    private void CheckLevelComplete2()
+    private void CheckLevelComplete3()
     {
         // get int 2
         GameObject var = GameObject.Find("ReturnValue");
@@ -138,7 +153,7 @@ public class GameManager : MonoBehaviour
             Success();
         }
     }
-    private void CheckLevelComplete3()
+    private void CheckLevelComplete4()
     {
         // get int 2
         GameObject go = GameObject.Find("ReturnValue/LandingArea/Ticket/Text (TMP)");
@@ -151,7 +166,7 @@ public class GameManager : MonoBehaviour
             Success();
         }
     }
-    private void CheckLevelComplete4()
+    private void CheckLevelComplete5()
     {
         // get int 2
         GameObject var = GameObject.Find("PointerVariable");
@@ -167,7 +182,7 @@ public class GameManager : MonoBehaviour
             Success();
         }
     }
-    private void CheckLevelComplete5()
+    private void CheckLevelComplete6()
     {
         // get int 2
         GameObject var1 = GameObject.Find("IntVariable1");
@@ -187,14 +202,14 @@ public class GameManager : MonoBehaviour
         }
     }
    
-    private void CheckLevelComplete6()
+    private void CheckLevelComplete7()
     {
         MegaAsteriskOperator[] objects = FindObjectsOfType<MegaAsteriskOperator>();
         // get int 2
         if(objects.Length == 1)
             Success();
     }
-    private void CheckLevelComplete7()
+    private void CheckLevelComplete8()
     {
         // get int 2
         GameObject var4 = GameObject.Find("IntVariable4");
@@ -204,7 +219,7 @@ public class GameManager : MonoBehaviour
             Success();
 
     }
-    private void CheckLevelComplete8()
+    private void CheckLevelComplete9()
     {
         // get int 2
         GameObject var1 = GameObject.Find("IntVariable1");
@@ -226,7 +241,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CheckLevelComplete9()
+    private void CheckLevelComplete10()
     {
         GameObject factory1 = GameObject.Find("Factory2");
         Transform inputTransform = factory1.transform.Find("Input");
@@ -235,7 +250,7 @@ public class GameManager : MonoBehaviour
             Success();
     }
 
-    private void CheckLevelComplete10()
+    private void CheckLevelComplete11()
     {
         GameObject factory2 = GameObject.Find("Factory2");
         GameObject go3 = factory2.transform.Find("Variables/IntVariable3/BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
@@ -246,6 +261,24 @@ public class GameManager : MonoBehaviour
         string val3 = go3.GetComponent<TMP_Text>().text;
 
         if (val3.Equals("989"))
+        {
+            Success();
+        }
+    }
+
+    private void CheckLevelComplete12()
+    {
+        GameObject factory1 = GameObject.Find("Factory1");
+        GameObject go1 = factory1.transform.Find("Variables/IntVariable1/BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
+        GameObject go3 = factory1.transform.Find("Variables/IntVariable3/BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
+
+        if (go1 == null || go3 == null)
+            return;
+
+        string val1 = go1.GetComponent<TMP_Text>().text;
+        string val3 = go3.GetComponent<TMP_Text>().text;
+
+        if (val1.Equals("704") && val3.Equals("311"))
         {
             Success();
         }

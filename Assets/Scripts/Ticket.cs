@@ -8,6 +8,17 @@ public class Ticket : MonoBehaviour, IDraggable, IRepresentable
     protected Vector3 localPos;
     protected string representation;
 
+    private PositionLegalityChecker positionLegalityChecker;
+
+    public void SetPositionLegalityChecker(PositionLegalityChecker p)
+    {
+        positionLegalityChecker = p;
+    }
+
+    private void Start()
+    {
+        positionLegalityChecker = new CheckPositionWhenValIsInBoxOpenedBySelfFactory();
+    }
     public string getRepresentation()
     {
         return representation;
@@ -44,6 +55,10 @@ public class Ticket : MonoBehaviour, IDraggable, IRepresentable
         // check if the ticket is on the return value - return gameobject
         if (transform.parent.GetComponent<ReturnValueLandingArea>() != null)
             return gameObject;
+        
+        // check if the ticket is on the input - return gameobject
+        if (transform.parent.GetComponent<InputLandingArea>() != null)
+            return gameObject;
 
         // check if the ticket is in the address position - return null
         return null;
@@ -67,6 +82,6 @@ public class Ticket : MonoBehaviour, IDraggable, IRepresentable
     }
     public virtual bool CheckIfPositionLegal(Vector3 pos)
     {
-        return true;
+        return positionLegalityChecker.CheckIfPositionLegal(gameObject, pos);
     }
 }

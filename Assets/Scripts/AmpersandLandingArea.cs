@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -35,8 +36,13 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
 
 
         // log in code
-        CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
+        CodeLogger codeLogger = GetCodeLogger();// 
         codeLogger.SetExtra("&" + varName);
+    }
+
+    protected virtual CodeLogger GetCodeLogger()
+    {
+        return GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
     }
 
     protected IEnumerator CaptureAddressInsertToReturnValue(GameObject go)

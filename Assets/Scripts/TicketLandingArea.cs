@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+
+// this will be the landing area inside a boxopen of a pointer
 public class TicketLandingArea : MonoBehaviour, ILandingArea
 {
     // check if the object that is being released on the landing area is supposed to be released there
