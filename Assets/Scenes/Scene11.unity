@@ -3232,6 +3232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 333579231}
   - component: {fileID: 333579232}
+  - component: {fileID: 333579233}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -3295,7 +3296,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3303,9 +3304,21 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &333579233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333579230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &336380103
 GameObject:
   m_ObjectHideFlags: 0
@@ -5692,6 +5705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 516527500}
   - component: {fileID: 516527501}
+  - component: {fileID: 516527502}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -5755,7 +5769,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5763,9 +5777,21 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &516527502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516527499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &518688500
 GameObject:
   m_ObjectHideFlags: 0
@@ -5776,6 +5802,7 @@ GameObject:
   m_Component:
   - component: {fileID: 518688501}
   - component: {fileID: 518688502}
+  - component: {fileID: 518688503}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -5839,7 +5866,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5847,9 +5874,21 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &518688503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518688500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -8297,6 +8336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 704865740}
   - component: {fileID: 704865741}
+  - component: {fileID: 704865742}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -8360,7 +8400,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8368,9 +8408,21 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &704865742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704865739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &709316104
 GameObject:
   m_ObjectHideFlags: 0
@@ -8651,6 +8703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 732029011}
   - component: {fileID: 732029012}
+  - component: {fileID: 732029013}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -8714,7 +8767,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8722,9 +8775,21 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &732029013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732029010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &734268973
 GameObject:
   m_ObjectHideFlags: 0
@@ -12180,6 +12245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1043723039}
   - component: {fileID: 1043723040}
+  - component: {fileID: 1043723041}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -12243,7 +12309,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12251,9 +12317,21 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1043723041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043723038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1043960134
 GameObject:
   m_ObjectHideFlags: 0
@@ -14325,6 +14403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1186361766}
   - component: {fileID: 1186361767}
+  - component: {fileID: 1186361768}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -14388,7 +14467,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14396,9 +14475,21 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1186361768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186361765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1218982223
 GameObject:
   m_ObjectHideFlags: 0
@@ -19988,6 +20079,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1643910490}
   - component: {fileID: 1643910491}
+  - component: {fileID: 1643910492}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -20051,7 +20143,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -20059,9 +20151,21 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1643910492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643910489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1651731024
 GameObject:
   m_ObjectHideFlags: 0
@@ -20300,6 +20404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1671736053}
   - component: {fileID: 1671736054}
+  - component: {fileID: 1671736055}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -20363,7 +20468,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -20371,9 +20476,21 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1671736055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671736052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1680913426
 GameObject:
   m_ObjectHideFlags: 0
@@ -21007,6 +21124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733569415}
   - component: {fileID: 1733569414}
+  - component: {fileID: 1733569416}
   m_Layer: 0
   m_Name: BoxClosed
   m_TagString: draggable
@@ -21055,7 +21173,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1afb2e9d076f00f4194b8840722bac27, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -21063,7 +21181,7 @@ SpriteRenderer:
   m_Size: {x: 2.11, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1733569415
@@ -21081,6 +21199,18 @@ Transform:
   m_Father: {fileID: 1844926252}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1733569416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733569413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f7b337f615a714daae9aace87ca2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742786022
 GameObject:
   m_ObjectHideFlags: 0
