@@ -5,9 +5,22 @@ using UnityEngine;
 
 public class VariableButton :MonoBehaviour, IPressable
 {
-    public GameObject closedBox;
-    public GameObject openBox;
-    public GameObject landingArea;
+    private GameObject closedBox;
+    private GameObject openBox;
+    private GameObject landingArea;
+
+    private void Start()
+    {
+        GetReferences();
+    }
+
+    protected void GetReferences()
+    {
+        openBox = transform.parent.Find("BoxOpen").gameObject;
+        landingArea = transform.parent.Find("BoxOpen/LandingArea").gameObject;
+        closedBox = transform.parent.Find("BoxClosed").gameObject;
+
+    }
 
     public void OnPressed()
     {
