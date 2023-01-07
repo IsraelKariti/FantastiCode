@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
 {
-    public GameObject megaAsteriskPrefab;
+    protected GameObject megaAsteriskPrefab;
 
+    protected GameObject megaAsteriskDup;
+    protected Ticket ticket;
 
     public string representation;
+
+    private void Start()
+    {
+        LoadMegaAsteriskPrefab();
+    }
+
+    protected virtual void LoadMegaAsteriskPrefab()
+    {
+        megaAsteriskPrefab = Resources.Load<GameObject>("Prefabs/MegaAsterisk");
+    }
 
     // check if the object that is being released on the landing area is supposed to be released there
     // for ex. operators can't be released on a return value (only int and address can!)
@@ -37,22 +49,22 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
             {
                 // check if the object on the return value is a ticket
                 Transform child = transform.GetChild(0);
-                Ticket ticket = child.gameObject.GetComponent<Ticket>();
+                ticket = child.gameObject.GetComponent<Ticket>();
                 if (ticket != null)
                 {
                     // create mega-asterisk
                     Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 3);
-                    GameObject megaAsterisk = Instantiate(megaAsteriskPrefab, pos, transform.rotation, transform);
-                    megaAsterisk.name = "Asterisk";
+                    megaAsteriskDup = Instantiate(megaAsteriskPrefab, pos, transform.rotation, transform);
+                    megaAsteriskDup.name = "Asterisk";
 
                     // forward to the mega asterisk the represntation of the return value (&var / malloc / ptr)
-                    megaAsterisk.GetComponent<IRepresentable>().setRepresentation(representation);
+                    megaAsteriskDup.GetComponent<IRepresentable>().setRepresentation(representation);
 
                     // set ticket to be child of mega asterisk
-                    ticket.transform.parent = megaAsterisk.transform;
+                    ticket.transform.parent = megaAsteriskDup.transform;
 
-                    // set ticket infront of the mega asterisk
-                    ticket.transform.localPosition = new Vector3(0, -0.15f, -1);
+                    RescaleAndRepositionMegaAsteriskAndTicket();
+
 
                     // remove box collider from ticket
                     Destroy(ticket.GetComponent<BoxCollider>());
@@ -83,6 +95,14 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
         GameObject gameManagerGameObject = GameObject.Find("GameManager");
         GameManager gameManager = gameManagerGameObject.GetComponent<GameManager>();
         gameManager.CheckLevelComplete();
+    }
+
+    protected virtual void RescaleAndRepositionMegaAsteriskAndTicket()
+    {
+        // leave mega asterisk as it is
+
+        // set ticket infront of the mega asterisk
+        ticket.transform.localPosition = new Vector3(0, -0.15f, -1);
     }
 
 }
