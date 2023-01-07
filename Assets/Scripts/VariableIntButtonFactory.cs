@@ -12,7 +12,7 @@ public class VariableIntButtonFactory : VariableButton
         // set the sprite
         Transform buttonBackground = transform.Find("ButtonBackground");
         SpriteRenderer backgroundSpriteRenderer = buttonBackground.gameObject.GetComponent<SpriteRenderer>();
-        backgroundSpriteRenderer.sprite = Resources.Load<Sprite>("fantasticodeButtonRound");
+        backgroundSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/fantasticodeButtonRound");
         buttonBackground.localScale = new Vector3(0.4f, 0.3f, 1f);
     }
 
