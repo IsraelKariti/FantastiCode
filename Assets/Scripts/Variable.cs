@@ -3,9 +3,25 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class Variable : MonoBehaviour, IRepresentable
 {
     private string representaion;
+
+    private void Awake()
+    {
+        // set representation (this is only important if the box was already open when the scene loaded Ex. scene 1)
+        string r = transform.Find("Button/Text").GetComponent<TMP_Text>().text;
+        setRepresentation(r);
+
+    }
+
+    private void Start()
+    {
+
+        // disable the checkbox
+        transform.Find("CheckBox").gameObject.SetActive(false);
+    }
 
     public string getRepresentation()
     {

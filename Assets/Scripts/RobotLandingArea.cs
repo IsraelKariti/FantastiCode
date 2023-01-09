@@ -3,14 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
+
 public class RobotLandingArea : MonoBehaviour, ILandingArea
 {
 
     private void Start()
     {
-        // change size of box collider
+        transform.localScale = new Vector3(1f, 1f, 1f);
+
         BoxCollider boxCollider = GetComponent<BoxCollider>();
-        boxCollider.size = new Vector3(6, boxCollider.size.y, boxCollider.size.z);
+        boxCollider.center = new Vector3(-4.6f, 0, 0);
+        boxCollider.size = new Vector3(7.1f, 1.6f, 1);
     }
     public virtual bool OnDraggableReleased(GameObject go)
     {
@@ -32,69 +36,91 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
             return false;
     }
 
-    public virtual void OnLandingArea(GameObject go)
+    public virtual void OnLandingArea(GameObject robot)
     {
         //
         //Debug.Log("robot landed");
 
         // make robot the child of the landing area
-        go.transform.parent = transform;
+        robot.transform.parent = transform;
 
-        StartCoroutine(AnimateRobot(go));
+        StartCoroutine(AnimateRobot(robot));
 
         // log in code
         CodeLogger codeLogger = GameObject.Find("CodeLogger").GetComponent<CodeLogger>();
         codeLogger.SetExtra("malloc");
     }
 
-    protected virtual IEnumerator AnimateRobot(GameObject go)
+    protected virtual IEnumerator AnimateRobot(GameObject robot)
     {
-        // get the empty check mark
-        Transform checkMarkTransform = transform.parent.Find("CheckBox/CheckMark");
-        Bounds checkMarkBounds = checkMarkTransform.GetComponent<SpriteRenderer>().bounds;
-        // animate robot to check box
-        Vector3 robotDestPosAtCheckBox = checkMarkBounds.center - new Vector3(checkMarkBounds.size.x, 0, 0); 
-
-        yield return AnimateRobotToGlobalPos(go, robotDestPosAtCheckBox);
-
-        // check box
-        checkMarkTransform.gameObject.SetActive(true);
-
-        // turn on the closed box
-        transform.parent.GetChild(1).gameObject.SetActive(true);
-
         // animate robot to ticket
         Bounds ticketBounds = transform.parent.Find("Ticket").GetComponent<SpriteRenderer>().bounds;
-        Vector3 robotDestPosAtTicket = ticketBounds.center - new Vector3(ticketBounds.size.x, 0, 0);
-        yield return AnimateRobotToGlobalPos(go, robotDestPosAtTicket);
+        Vector3 robotDestPosAtTicket = ticketBounds.center - new Vector3(ticketBounds.size.x - 0.3f, 0, 1f);
+        yield return AnimateRobotToGlobalPosWithConstantSpeed(robot, robotDestPosAtTicket);
+
+        // poop closed box
+        yield return InflateClosedBox();
+
+    
 
         // duplicate ticket
         //string ticketRepresentation = transform.parent.GetComponent<IRepresentable>().getRepresentation();
-        GameObject ticketDup = Instantiate(transform.parent.Find("Ticket").gameObject, go.transform);
+        GameObject ticketDup = Instantiate(transform.parent.Find("Ticket").gameObject, robot.transform);
         ticketDup.name = "Ticket";
         ticketDup.GetComponent<IRepresentable>().setRepresentation("malloc");
-        ticketDup.transform.localPosition = new Vector3(2f, 0.1f, 2f);
+        ticketDup.transform.localPosition = new Vector3(2f, 0.1f, 1f);
 
         // animate robot to the return value
         Transform returnValueTransform = GameObject.Find("ReturnValue/LandingArea").transform;
         Vector3 destPosAtReturnValue = returnValueTransform.position;
-        yield return AnimateRobotToGlobalPos(go, new Vector3(destPosAtReturnValue.x-2f, destPosAtReturnValue.y, destPosAtReturnValue.z-3));
+        yield return AnimateRobotToGlobalPosWithConstantSpeed(robot, new Vector3(destPosAtReturnValue.x-2f, destPosAtReturnValue.y, destPosAtReturnValue.z-3));
 
         // make ticket the child of the return value
         foreach (Transform t in returnValueTransform)
             Destroy(t.gameObject);
-        go.transform.Find("Ticket").parent = returnValueTransform;
+        robot.transform.Find("Ticket").parent = returnValueTransform;
 
         // set representation to return value
         returnValueTransform.GetComponent<ReturnValueLandingArea>().representation = "malloc";
 
         // destroy robot
-        Destroy(go);
+        Destroy(robot);
 
         // check if level finished
         GameObject gameManagerGameObject = GameObject.Find("GameManager");
         GameManager gameManager = gameManagerGameObject.GetComponent<GameManager>();
         gameManager.CheckLevelComplete();
+
+        yield return null;
+    }
+
+    protected virtual IEnumerator InflateClosedBox()
+    {
+        // get orig and dest
+        Transform closedBoxTransform = transform.parent.Find("BoxClosed");
+        Vector3 closedBoxFullScale = new Vector3(0.2f, 0.2f, 1f);
+        Vector3 closedBoxSlimScale =new Vector3(0.01f, closedBoxFullScale.y, closedBoxFullScale.z);
+
+        Vector3 closedBoxStartPos = closedBoxTransform.localPosition + new Vector3(1f, 0, 0);
+        Vector3 closedBoxEndPos = closedBoxTransform.localPosition;
+
+        // activate
+        closedBoxTransform.gameObject.SetActive(true);
+
+        float timePassed = 0;
+
+        float fraction = 0;
+        float animTime = 1f;
+
+        while (fraction < 1)
+        {
+            timePassed += Time.deltaTime;
+            fraction = timePassed / animTime;
+
+            closedBoxTransform.localScale = Vector3.Lerp(closedBoxSlimScale, closedBoxFullScale, fraction);
+            closedBoxTransform.localPosition = Vector3.Lerp(closedBoxStartPos, closedBoxEndPos, fraction);
+            yield return null;
+        }
 
         yield return null;
     }
@@ -133,6 +159,41 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         {
             timePassed += Time.deltaTime;
             fraction = timePassed / animTime;
+
+            go.transform.position = Vector3.Lerp(startGlobalPos, endGlobalPos, fraction);
+            yield return null;
+        }
+
+    }
+
+    // here the animation is not dependant on the time, but on the speed
+    protected virtual IEnumerator AnimateRobotToGlobalPosWithConstantSpeed(GameObject go, Vector3 dest)
+    {
+        float speed = 10;// speed of object is 1 meter per second 1m/s
+
+        Vector3 startGlobalPos = go.transform.position;
+        Vector3 endGlobalPos = dest;
+
+        // calculate the distance between orig and dest
+        float dist = Vector3.Distance(startGlobalPos, endGlobalPos);
+
+        float passedDist = 0;
+
+        float fraction = 0;
+
+        while (fraction<1)
+        {
+            // the time passed in curr frame
+            float frameTime = Time.deltaTime;
+
+            // the distance passed in this frame time
+            float frameDist = frameTime * speed;
+
+            // the accumulative distance that was passed
+            passedDist += frameDist;
+
+            //the fraction of the distance that was passed
+            fraction = passedDist / dist;
 
             go.transform.position = Vector3.Lerp(startGlobalPos, endGlobalPos, fraction);
             yield return null;

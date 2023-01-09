@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[ExecuteInEditMode]
+
 public class BoxClosedFactory : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        Debug.Log("edit mode awake");
         Sprite s = Resources.Load<Sprite>("Sprites/fantasticodeclosedBox");
 
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
