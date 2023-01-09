@@ -31,6 +31,7 @@ public class TicketLandingArea : MonoBehaviour, ILandingArea
 
         // set address value as child of landing area 
         go.transform.parent = transform;
+        go.transform.localPosition = Vector3.zero;
         go.transform.localPosition = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y, -1f);
 
         // get current variable name

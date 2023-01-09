@@ -53,6 +53,9 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
 
     protected virtual IEnumerator AnimateRobot(GameObject robot)
     {
+        // make the robot NOT DRAGGABLE
+        Destroy(robot.GetComponent<BoxCollider>());
+
         // animate robot to ticket
         Bounds ticketBounds = transform.parent.Find("Ticket").GetComponent<SpriteRenderer>().bounds;
         Vector3 robotDestPosAtTicket = ticketBounds.center - new Vector3(ticketBounds.size.x - 0.3f, 0, 1f);

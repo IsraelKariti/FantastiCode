@@ -49,6 +49,7 @@ public class IntVariableLandingArea : MonoBehaviour, ILandingArea
             else// there is no int val already (the box is empty)
             {
                 go.transform.parent = transform;
+                go.transform.localPosition = Vector3.zero;
             }
 
             // update the code logger
