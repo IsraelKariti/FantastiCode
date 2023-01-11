@@ -13,8 +13,12 @@ public class GameManager : MonoBehaviour
     public GameObject goodWork;
     string consentIdentifier;
     bool isOptInConsentRequired;
+    bool lastMode;
+
     async void Start()
     {
+        lastMode = true;
+
         try
         {
             await UnityServices.InitializeAsync();
@@ -48,6 +52,31 @@ public class GameManager : MonoBehaviour
         Events.Flush();
 
 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+#if (UNITY_EDITOR)
+        // your code here
+        return;
+#endif
+
+        if (Screen.fullScreen == true && lastMode == false)
+        {
+            lastMode = true;
+
+            // tilt camera forward
+            GameObject.Find("Main Camera").transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        if (Screen.fullScreen == false && lastMode == true)
+        {
+            lastMode = false;
+
+            // tilt camera backward
+            GameObject.Find("Main Camera").transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+
+        }
     }
 
     public void CheckLevelComplete()
@@ -126,8 +155,8 @@ public class GameManager : MonoBehaviour
     private void CheckLevelComplete2()
     {
         // get int 2
-        GameObject var = GameObject.Find("ReturnValue");
-        GameObject go = var.transform.Find("LandingArea/IntVal/ValText")?.gameObject;
+        GameObject v = GameObject.Find("ReturnValue");
+        GameObject go = v.transform.Find("LandingArea/IntVal/ValText")?.gameObject;
         if (go == null)
             return;
         // get the int value
