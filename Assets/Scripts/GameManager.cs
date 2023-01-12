@@ -98,6 +98,9 @@ public class GameManager : MonoBehaviour
             case 12:
                 CheckLevelComplete12();
                 return;
+            case 13:
+                CheckLevelComplete13();
+                return;
 
         }
     }
@@ -200,7 +203,57 @@ public class GameManager : MonoBehaviour
             Success();
         }
     }
+
     private void CheckLevelComplete4()
+    {
+        GameObject[] gos = new GameObject[3];
+        string[] strings = new string[3];
+        // get int 2
+        gos[0] = GameObject.Find("IntVariable1");
+        gos[1] = GameObject.Find("IntVariable2");
+        gos[2] = GameObject.Find("IntVariable3");
+
+        int i = 0;
+        foreach (GameObject go in gos)
+        {
+            Transform t = go.transform.Find("BoxOpen/LandingArea/IntVal/ValText");
+            // take the number for comparison
+            if (t != null)
+            {
+                strings[i++] =t.gameObject.GetComponent<TMP_Text>().text;
+            }
+        }
+
+        // check if there are 2 identical numbers (this is bad news for the user)
+        if (!strings[0].Equals("76") && !strings[1].Equals("76") && !strings[2].Equals("76") 
+            || !strings[0].Equals("555") && !strings[1].Equals("555") && !strings[2].Equals("555"))
+        {
+            GameObject goReset = GameObject.Find("ResetExplanation");
+            GameObject goTxt = goReset.transform.Find("Text").gameObject;
+
+            if (goTxt.activeSelf == false)
+                goTxt.SetActive(true);
+        }
+
+        // if the numbers are not equal that means that there is a chance of success
+        GameObject go1 = gos[0].transform.Find("BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
+        GameObject go2 = gos[1].transform.Find("BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
+        GameObject go3 = gos[2].transform.Find("BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
+        if (go1 == null || go2 == null || go3 == null)
+            return;
+
+        // get the int value
+        string val1 = go1.GetComponent<TMP_Text>().text;
+        string val2 = go2.GetComponent<TMP_Text>().text;
+        string val3 = go3.GetComponent<TMP_Text>().text;
+
+        if (val1.Equals("76")  && val3.Equals("555"))
+        {
+            Success();
+        }
+    }
+
+    private void CheckLevelComplete5()
     {
         // get int 2
         GameObject var = GameObject.Find("ReturnValue");
@@ -212,11 +265,11 @@ public class GameManager : MonoBehaviour
         // get the int value
         string val = go.GetComponent<TMP_Text>().text;
 
-        if (val.Equals("BF53")) {
+        if (val.Equals("#0001")) {
             Success();
         }
     }
-    private void CheckLevelComplete5()
+    private void CheckLevelComplete6()
     {
         // get int 2
         GameObject go = GameObject.Find("ReturnValue/LandingArea/Ticket/Text (TMP)");
@@ -229,7 +282,7 @@ public class GameManager : MonoBehaviour
             Success();
         }
     }
-    private void CheckLevelComplete6()
+    private void CheckLevelComplete7()
     {
         // get int 2
         GameObject var = GameObject.Find("PointerVariable");
@@ -247,14 +300,14 @@ public class GameManager : MonoBehaviour
     }
     
    
-    private void CheckLevelComplete7()
+    private void CheckLevelComplete8()
     {
         MegaAsteriskOperator[] objects = FindObjectsOfType<MegaAsteriskOperator>();
         // get int 2
         if(objects.Length == 1)
             Success();
     }
-    private void CheckLevelComplete8()
+    private void CheckLevelComplete9()
     {
         // get int 2
         GameObject var4 = GameObject.Find("IntVariable4");
@@ -264,7 +317,7 @@ public class GameManager : MonoBehaviour
             Success();
 
     }
-    private void CheckLevelComplete9()
+    private void CheckLevelComplete10()
     {
         // get int 2
         GameObject var1 = GameObject.Find("IntVariable1");
@@ -286,7 +339,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CheckLevelComplete10()
+    private void CheckLevelComplete11()
     {
         GameObject factory1 = GameObject.Find("Factory2");
         Transform inputTransform = factory1.transform.Find("Input");
@@ -295,7 +348,7 @@ public class GameManager : MonoBehaviour
             Success();
     }
 
-    private void CheckLevelComplete11()
+    private void CheckLevelComplete12()
     {
         GameObject factory2 = GameObject.Find("Factory2");
         GameObject go3 = factory2.transform.Find("Variables/IntVariable3/BoxOpen/LandingArea/IntVal/ValText")?.gameObject;
@@ -311,7 +364,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CheckLevelComplete12()
+    private void CheckLevelComplete13()
     {
         GameObject factory1 = GameObject.Find("Factory1");
         GameObject go1 = factory1.transform.Find("Variables/IntVariable1/BoxOpen/LandingArea/IntVal/ValText")?.gameObject;

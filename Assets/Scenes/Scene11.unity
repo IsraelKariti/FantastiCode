@@ -8318,14 +8318,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695583192}
-  m_LocalRotation: {x: -0, y: 0, z: -0.6480536, w: -0.7615947}
-  m_LocalPosition: {x: 2.11, y: 1.6, z: -4}
-  m_LocalScale: {x: -0.32, y: 1.28, z: 1}
+  m_LocalRotation: {x: 0, y: -0, z: 0.47101188, w: -0.88212687}
+  m_LocalPosition: {x: -5.78, y: -1.08, z: -4}
+  m_LocalScale: {x: 0.3, y: 0.51, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -279.21}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -416.2}
 --- !u!1 &704865739
 GameObject:
   m_ObjectHideFlags: 0
@@ -12053,7 +12053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1006244760}
   - component: {fileID: 1006244762}
-  - component: {fileID: 1006244763}
+  - component: {fileID: 1006244761}
   m_Layer: 0
   m_Name: AsteriskLandingArea
   m_TagString: landingArea
@@ -12076,6 +12076,18 @@ Transform:
   m_Father: {fileID: 1844926252}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1006244761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006244759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc5a2240cb5c75448275736d24b3698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1006244762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12089,18 +12101,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1006244763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006244759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f5e8147192de4047a73b0cff866b3e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1032879669
 GameObject:
   m_ObjectHideFlags: 0
@@ -18299,7 +18299,7 @@ GameObject:
   - component: {fileID: 1470818984}
   - component: {fileID: 1470818983}
   m_Layer: 0
-  m_Name: FullScreenChecker (11)
+  m_Name: FullScreenChecker (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
