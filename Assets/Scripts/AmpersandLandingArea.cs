@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[ExecuteInEditMode]
+
 public class AmpersandLandingArea : MonoBehaviour, ILandingArea
 {
-    string varName;
+    protected string varName;
     private void Start()
     {
         // get current variable name
         varName = transform.parent.Find("Button/Text").GetComponent<TMP_Text>().text;
+
+        
     }
 
     // check if the object that is being released on the landing area is supposed to be released there
@@ -26,7 +30,7 @@ public class AmpersandLandingArea : MonoBehaviour, ILandingArea
     }
 
     //once the object has been releaased
-    public void OnLandingArea(GameObject go)
+    public virtual void OnLandingArea(GameObject go)
     {
         go.transform.parent = transform;
 

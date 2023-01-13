@@ -185,26 +185,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+   
     private void CheckLevelComplete3()
-    {
-
-
-        /////////
-        /// // get int 2
-        GameObject v = GameObject.Find("ReturnValue");
-        GameObject go = v.transform.Find("LandingArea/IntVal/ValText")?.gameObject;
-        if (go == null)
-            return;
-        // get the int value
-        string val = go.GetComponent<TMP_Text>().text;
-
-        if (val.Equals("555"))
-        {
-            Success();
-        }
-    }
-
-    private void CheckLevelComplete4()
     {
         GameObject[] gos = new GameObject[3];
         string[] strings = new string[3];
@@ -247,11 +229,27 @@ public class GameManager : MonoBehaviour
         string val2 = go2.GetComponent<TMP_Text>().text;
         string val3 = go3.GetComponent<TMP_Text>().text;
 
-        if (val1.Equals("76")  && val3.Equals("555"))
+        if (val1.Equals("555")  && val3.Equals("76"))
         {
             Success();
         }
     }
+    private void CheckLevelComplete4()
+    {
+        /// // get int 2
+        GameObject v = GameObject.Find("ReturnValue");
+        GameObject go = v.transform.Find("LandingArea/IntVal/ValText")?.gameObject;
+        if (go == null)
+            return;
+        // get the int value
+        string val = go.GetComponent<TMP_Text>().text;
+
+        if (val.Equals("555"))
+        {
+            Success();
+        }
+    }
+
 
     private void CheckLevelComplete5()
     {
@@ -384,7 +382,7 @@ public class GameManager : MonoBehaviour
 
     private void Success()
     {
-        Debug.Log("success");
+        //Debug.Log("success");
         goodWork.SetActive(true);
     }
 }

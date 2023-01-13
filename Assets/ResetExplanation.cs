@@ -17,7 +17,7 @@ public class ResetExplanation : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             TMP_Text t = GetComponent<TMP_Text>();
             t.enabled = !t.enabled;
         }

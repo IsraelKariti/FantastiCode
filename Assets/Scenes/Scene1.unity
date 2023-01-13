@@ -7314,7 +7314,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213236964}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d9bc4e623bed73499b91fb55708ab71, type: 3}
   m_Name: 
@@ -9852,7 +9852,7 @@ GameObject:
   - component: {fileID: 1520841278}
   - component: {fileID: 1520841277}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
