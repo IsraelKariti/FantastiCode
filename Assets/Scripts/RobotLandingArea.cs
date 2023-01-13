@@ -23,14 +23,15 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         // check if the released object is s robot
         if (robot != null)
         {
-            // check if the box is taken or not
-            bool on = transform.parent.Find("CheckBox/CheckMark").gameObject.active;
-            Debug.Log("on: " + on);
-
-            if (on)
+            // check if the box exist or not
+            Transform fullTicketTransform = transform.parent.Find("Ticket/TicketFull");
+            if (fullTicketTransform == null)
                 return false;
-            else
-                return true;
+
+            bool on = fullTicketTransform.gameObject.active;
+            //Debug.Log("on: " + on);
+
+            return on;
         }
         else
             return false;
