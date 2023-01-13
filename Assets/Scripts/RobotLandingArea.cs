@@ -61,6 +61,9 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         Vector3 robotDestPosAtTicket = ticketBounds.center - new Vector3(ticketBounds.size.x - 0.3f, 0, 1f);
         yield return AnimateRobotToGlobalPosWithConstantSpeed(robot, robotDestPosAtTicket);
 
+        // punch a hole in the ticket (disable the full ticket)
+        transform.parent.Find("Ticket/TicketFull").gameObject.SetActive(false);
+
         // poop closed box
         yield return InflateClosedBox();
 

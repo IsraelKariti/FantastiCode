@@ -4,10 +4,8 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 
-public class BoxClosed : MonoBehaviour
+public class BoxClosedInt : MonoBehaviour
 {
-    
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -15,7 +13,7 @@ public class BoxClosed : MonoBehaviour
 
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = s;
-
+        spriteRenderer.color = new Color(1f, 0.9f, 0.9f, 1f);
         transform.localScale = new Vector3(0.2f, 0.2f, 1f);
     }
 

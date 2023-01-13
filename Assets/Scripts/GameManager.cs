@@ -229,7 +229,7 @@ public class GameManager : MonoBehaviour
         string val2 = go2.GetComponent<TMP_Text>().text;
         string val3 = go3.GetComponent<TMP_Text>().text;
 
-        if (val1.Equals("555")  && val3.Equals("76"))
+        if (val1.Equals("76")  && val3.Equals("555"))
         {
             Success();
         }
