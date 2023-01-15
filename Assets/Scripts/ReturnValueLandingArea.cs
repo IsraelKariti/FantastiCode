@@ -88,6 +88,9 @@ public class ReturnValueLandingArea : MonoBehaviour, ILandingArea
         }
         go.transform.parent = transform;
 
+        // put the go in the middle of the return value
+        go.transform.localPosition = Vector3.zero;
+
         //get the representation of the object landed (int / ticket)
         representation = go.GetComponent<IRepresentable>().getRepresentation();
 

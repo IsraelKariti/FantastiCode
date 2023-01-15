@@ -255,7 +255,7 @@ public class GameManager : MonoBehaviour
     {
         // get int 2
         GameObject var = GameObject.Find("ReturnValue");
-        GameObject go = var.transform.Find("LandingArea/Ticket/Text (TMP)")?.gameObject;
+        GameObject go = var.transform.Find("LandingArea/Ticket/Text")?.gameObject;
 
         if (go == null)
             return;
@@ -270,13 +270,13 @@ public class GameManager : MonoBehaviour
     private void CheckLevelComplete6()
     {
         // get int 2
-        GameObject go = GameObject.Find("ReturnValue/LandingArea/Ticket/Text (TMP)");
+        GameObject go = GameObject.Find("ReturnValue/LandingArea/Ticket/Text");
         if (go == null)
             return;
         // get the int value
         string val = go.GetComponent<TMP_Text>().text;
 
-        if (val.Equals("BF54")) {
+        if (val.Equals("#0004")) {
             Success();
         }
     }
@@ -284,7 +284,7 @@ public class GameManager : MonoBehaviour
     {
         // get int 2
         GameObject var = GameObject.Find("PointerVariable");
-        GameObject go = var.transform.Find("BoxOpen/LandingArea/Ticket/Text (TMP)")?.gameObject;
+        GameObject go = var.transform.Find("BoxOpen/LandingArea/Ticket/Text")?.gameObject;
 
         if (go == null)
             return;
@@ -292,7 +292,7 @@ public class GameManager : MonoBehaviour
         // get the int value
         string val = go.GetComponent<TMP_Text>().text;
 
-        if (val.Equals("BF54")) {
+        if (val.Equals("#0004")) {
             Success();
         }
     }
