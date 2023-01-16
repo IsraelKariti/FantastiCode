@@ -9,7 +9,7 @@ public class MegaAsteriskLandingArea : MonoBehaviour, ILandingArea
     private void Start()
     {
         // get the address of this box
-        currAddress = transform.parent.Find("Ticket/Text").GetComponent<TMP_Text>().text;
+        currAddress = transform.parent.Find("Ticket/Text (TMP)").GetComponent<TMP_Text>().text;
     }
     public virtual bool OnDraggableReleased(GameObject go)
     {
