@@ -276,7 +276,7 @@ public class GameManager : MonoBehaviour
         // get the int value
         string val = go.GetComponent<TMP_Text>().text;
 
-        if (val.Equals("BF54")) {
+        if (val.Equals("#0004")) {
             Success();
         }
     }
@@ -292,7 +292,7 @@ public class GameManager : MonoBehaviour
         // get the int value
         string val = go.GetComponent<TMP_Text>().text;
 
-        if (val.Equals("BF54")) {
+        if (val.Equals("#0004")) {
             Success();
         }
     }

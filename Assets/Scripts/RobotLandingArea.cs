@@ -13,8 +13,8 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         transform.localScale = new Vector3(1f, 1f, 1f);
 
         BoxCollider boxCollider = GetComponent<BoxCollider>();
-        boxCollider.center = new Vector3(-4.6f, 0, 0);
-        boxCollider.size = new Vector3(7.1f, 1.6f, 1);
+        boxCollider.center = new Vector3(-3.1f, 0, 0);
+        boxCollider.size = new Vector3(9.2f, 1.6f, 1);
     }
     public virtual bool OnDraggableReleased(GameObject go)
     {
