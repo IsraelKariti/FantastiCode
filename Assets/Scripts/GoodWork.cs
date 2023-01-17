@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[ExecuteInEditMode]
 public class GoodWork : MonoBehaviour
 {
 
-
+    private void Start()
+    {
+        transform.localPosition = new Vector3(-5, 0, -6);
+        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/fantasticodeNextButton");
+    }
     // Update is called once per frame
     void Update()
     {
