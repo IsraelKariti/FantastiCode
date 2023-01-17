@@ -68,7 +68,7 @@ public class RobotLandingArea : MonoBehaviour, ILandingArea
         // poop closed box
         yield return InflateClosedBox();
 
-    
+        transform.parent.Find("ConnectorBoxTicket").gameObject.SetActive(true);
 
         // duplicate ticket
         //string ticketRepresentation = transform.parent.GetComponent<IRepresentable>().getRepresentation();
