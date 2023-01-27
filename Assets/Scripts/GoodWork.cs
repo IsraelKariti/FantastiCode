@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 [ExecuteInEditMode]
 public class GoodWork : MonoBehaviour
 {
-
+    private void Awake()
+    {
+        gameObject.name = "next";
+    
+    }
     private void Start()
     {
         transform.localPosition = new Vector3(5, -3, -6);
-        transform.localScale = new Vector3(1, 1, 1);
+        transform.localScale = new Vector3(0.4f, 0.4f, 1);
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/fantasticodeNextButton");
     }
     // Update is called once per frame
